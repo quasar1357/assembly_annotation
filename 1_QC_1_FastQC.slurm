@@ -19,7 +19,7 @@ module add UHTS/Quality_control/fastqc/0.11.9
 course_dir=/data/users/rschwob/01_assembly_annotation_course
 fastq_parent_dir=${course_dir}/raw_data
 output_parent_dir=${course_dir}/results/1_QC_1_FastQC
-# mkdir ${output_parent_dir}
+mkdir ${output_parent_dir}
 
 # For each sequencing method, produce input and output folders and run the analysis
 for fastq_dir in ${fastq_parent_dir}/*
