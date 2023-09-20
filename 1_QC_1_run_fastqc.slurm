@@ -5,7 +5,7 @@
 #SBATCH --partition=pall
 
 #SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=4000M
+#SBATCH --mem=4000M
 #SBATCH --time=01:00:00
 
 #SBATCH --job-name=fastqc
