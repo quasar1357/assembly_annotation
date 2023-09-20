@@ -21,7 +21,7 @@ fastq_parent_dir=${course_dir}/raw_data
 output_parent_dir=${course_dir}/results/1_QC_1_FastQC
 mkdir ${output_parent_dir}
 
-# For each sequencing method, produce input and output folders and run the analysis
+# For each sequencing method, get input folder, create output folder and run the analysis
 for fastq_dir in ${fastq_parent_dir}/*
 do
     seq_method=$(basename "$fastq_dir")
