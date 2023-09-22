@@ -4,8 +4,8 @@
 #SBATCH --mail-type=end,fail
 #SBATCH --partition=pall
 
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=40G
+#SBATCH --cpus-per-task=10
+#SBATCH --mem=50G
 #SBATCH --time=02:00:00
 
 #SBATCH --job-name=jellyfish
@@ -29,6 +29,6 @@ do
     mkdir ${output_dir}
 
     # Run jellyfish
-    jellyfish count -C -m 14 -s 1000000000 -t 4 -o ${output_dir}/reads.jf <(zcat ${fastq_dir}/*)
+    jellyfish count -C -m 19 -s 5000000000 -t 10 -o ${output_dir}/reads.jf <(zcat ${fastq_dir}/*)
     jellyfish histo -t 10 ${output_dir}/reads.jf > ${output_dir}/reads.histo
 done
