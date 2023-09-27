@@ -2,7 +2,7 @@
 
 #SBATCH --mail-user=roman.schwob@students.unibe.ch
 #SBATCH --mail-type=end,fail
-#SBATCH --partition=pcourseassembly
+#SBATCH --partition=pall
 
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=48G
@@ -21,14 +21,10 @@ fastq_parent_dir=${course_dir}/raw_data
 output_parent_dir=${course_dir}/results/2_assembly_3_trinity
 mkdir ${output_parent_dir}
 
-# For each sequencing method, get input folder, create output folder and run the analysis
-for fastq_dir in ${fastq_parent_dir}/*
-do
-    seq_method=$(basename "$fastq_dir")
-    output_dir=${output_parent_dir}/${seq_method}
-    mkdir ${output_dir}
+# For the RNAseq library, get input folder and create output
+seq_method=RNAseq
+fastq_dir=${fastq_parent_dir}/${seq_method}
+output_dir=${output_parent_dir}/${seq_method}
+mkdir ${output_dir}
 
-    # Run jellyfish
-    jellyfish count -C -m 19 -s 5000000000 -t 10 -o ${output_dir}/reads.jf <(zcat ${fastq_dir}/*)
-    jellyfish histo -t 10 ${output_dir}/reads.jf > ${output_dir}/reads.histo
-done
+# Run trinity

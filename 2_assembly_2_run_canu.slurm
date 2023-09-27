@@ -2,7 +2,7 @@
 
 #SBATCH --mail-user=roman.schwob@students.unibe.ch
 #SBATCH --mail-type=end,fail
-#SBATCH --partition=pcourseassembly
+#SBATCH --partition=pall
 
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
@@ -21,14 +21,13 @@ fastq_parent_dir=${course_dir}/raw_data
 output_parent_dir=${course_dir}/results/2_assembly_2_canu
 mkdir ${output_parent_dir}
 
-# For each sequencing method, get input folder, create output folder and run the analysis
-for fastq_dir in ${fastq_parent_dir}/*
-do
-    seq_method=$(basename "$fastq_dir")
-    output_dir=${output_parent_dir}/${seq_method}
-    mkdir ${output_dir}
+# For the pacbio library, get input folder and create output
+seq_method=pacbio
+fastq_dir=${fastq_parent_dir}/${seq_method}
+output_dir=${output_parent_dir}/${seq_method}
+mkdir ${output_dir}
 
-    # Run jellyfish
-    jellyfish count -C -m 19 -s 5000000000 -t 10 -o ${output_dir}/reads.jf <(zcat ${fastq_dir}/*)
-    jellyfish histo -t 10 ${output_dir}/reads.jf > ${output_dir}/reads.histo
-done
+# Run canu
+canu -p canu -d ${output_dir} genomeSize=131m -pacbio ${fastq_dir}/* \
+        gridEngineResourceOption="--cpus-per-task=16 --mem-per-cpu=64" \
+        gridOptions="--mail-user=mymail@students.unibe.ch --mail-type=end,fail --partition=pall --job-name=canu --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/output_canu_%j.o --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/error_canu_%j.e"
