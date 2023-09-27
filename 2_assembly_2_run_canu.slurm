@@ -30,8 +30,12 @@ mkdir ${output_dir}
 # Run canu
 canu -p canu -d ${output_dir} genomeSize=131m -pacbio ${fastq_dir}/* \
         maxThreads=16 maxMemory=64 \
-        gridEngineResourceOption="--cpus-per-task=THREADS --mem=MEMORY" \
+        gridEngineResourceOption="--cpus-per-task=THREADS --mem-per-cpu=MEMORY" \
         gridOptions="--mail-user=roman.schwob@students.unibe.ch --mail-type=end,fail --partition=pall --job-name=canu"
+
+
+
+
 
                 # "--output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/output_canu_%j.o " + \
                 # "--error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/error_canu_%j.e"
