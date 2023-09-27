@@ -29,5 +29,18 @@ mkdir ${output_dir}
 
 # Run canu
 canu -p canu -d ${output_dir} genomeSize=131m -pacbio ${fastq_dir}/* \
-        gridEngineResourceOption="--cpus-per-task=16 --mem-per-cpu=64" \
-        gridOptions="--mail-user=mymail@students.unibe.ch --mail-type=end,fail --partition=pall --job-name=canu --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/output_canu_%j.o --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/error_canu_%j.e"
+        maxThreads=16 maxMemory=64 \
+        gridEngineResourceOption="--cpus-per-task=THREADS --mem=MEMORY" \
+        gridOptions="--mail-user=roman.schwob@students.unibe.ch --mail-type=end,fail --partition=pall --job-name=canu"
+
+                # "--output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/output_canu_%j.o " + \
+                # "--error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/error_canu_%j.e"
+
+# files="ERR3415830.fastq.gz ERR3415831.fastq.gz"
+# gridEngineResourceOption="--cpus-per-task=THREADS --mem-per-cpu=MEMORY"
+
+
+# # what is the genome size?
+# for file in $files; do
+#   canu -p pacbio_canu -d $out_dir genomeSize=124m -pacbio $file_path/$file maxThreads=16 maxMemory=64
+# done
