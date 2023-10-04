@@ -26,4 +26,4 @@ assembly=${course_dir}/results/2_assembly_2_canu/pacbio/canu.contigs.fasta
 
 # Create bowtie index
 # bowtie2-build ${assembly} bt2_flye
-bowtie2-build ${assembly}/* bt2_canu
+bowtie2-build ${assembly} bt2_canu
