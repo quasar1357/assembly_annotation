@@ -23,6 +23,8 @@ cd ${assembly_dir}
 
 # Define input assembly and run alignment, with paired-end illumina reads and sensitive-local mode
 assembly_tag=bt2_flye
-bowtie2 -x ${assembly_tag} -1 ${illumina_dir}/*_1* -2 ${illumina_dir}/*_2* -S ${assembly_tag}.sam --sensitive-local
+bowtie2 -p 4 -x ${assembly_tag} -1 ${illumina_dir}/*_1* -2 ${illumina_dir}/*_2* -S ${assembly_tag}.sam --sensitive-local
 assembly_tag=bt2_canu
-bowtie2 -x ${assembly_tag} -1 ${illumina_dir}/*_1* -2 ${illumina_dir}/*_2* -S ${assembly_tag}.sam --sensitive-local
+bowtie2 -p 4 -x ${assembly_tag} -1 ${illumina_dir}/*_1* -2 ${illumina_dir}/*_2* -S ${assembly_tag}.sam --sensitive-local
+# Options:
+    # --threads (-p): Launch NTHREADS parallel search threads (default: 1)
