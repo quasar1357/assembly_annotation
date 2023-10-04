@@ -22,12 +22,15 @@ mkdir ${output_dir}
 bam_dir=${course_dir}/results/3_polishing_1_align_illumina
 
 # Define input files and run pilon
+
+# FOR FLYE
 assembly=${course_dir}/results/2_assembly_1_flye/pacbio/assembly.fasta
 align_tag=bt2_flye
 bam_file=${bam_dir}/${align_tag}.bam
-pilon --genome ${assembly} --frags ${bam_file} --output ${align_tag} --outdir ${output_dir}
+pilon --genome ${assembly} --frags ${bam_file} --output pilon_${align_tag} --outdir ${output_dir}
 
+# FOR CANU
 assembly=${course_dir}/results/2_assembly_2_canu/pacbio/canu.contigs.fasta
 align_tag=bt2_canu
 bam_file=${bam_dir}/${align_tag}.bam
-pilon --genome ${assembly} --frags ${bam_file} --output ${align_tag} --outdir ${output_dir}
+pilon --genome ${assembly} --frags ${bam_file} --output pilon_${align_tag} --outdir ${output_dir}

@@ -6,7 +6,7 @@
 
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=48G
-#SBATCH --time=05:00:00
+#SBATCH --time=10:00:00
 
 #SBATCH --job-name=bt2_align
 #SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/output_bt2_align_%j.o
