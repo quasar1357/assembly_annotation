@@ -19,6 +19,7 @@ module add UHTS/Aligner/bowtie2/2.3.4.1
 course_dir=/data/users/rschwob/01_assembly_annotation_course
 output_dir=${course_dir}/results/3_polishing_1_align_illumina
 mkdir ${output_dir}
+cd ${output_dir}
 
 # Define input assembly and create index
 assembly=${course_dir}/results/2_assembly_1_flye/pacbio/assembly.fasta

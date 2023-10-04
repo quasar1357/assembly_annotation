@@ -15,7 +15,7 @@
 # Add the modules
 module add UHTS/Aligner/bowtie2/2.3.4.1
 
-# Define and create output directory
+# Define input and output directories
 course_dir=/data/users/rschwob/01_assembly_annotation_course
 illumina_dir=${course_dir}/raw_data/Illumina
 assembly_dir=${course_dir}/results/3_polishing_1_align_illumina
