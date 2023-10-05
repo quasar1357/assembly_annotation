@@ -6,7 +6,7 @@
 
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
-#SBATCH --time=1-00:00:00
+#SBATCH --time=02:00:00
 
 #SBATCH --job-name=quast
 #SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/output_quast_%j.o
@@ -29,11 +29,11 @@ ref_features=${course_dir}/references/TAIR10_GFF3_genes.gff
 # NOTE: CHOOSE THE ONE TO USE (OUT-COMMENT THE OTHERS)
 
 # WITH POLISHED ASSEMBLIES
-assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_flye.fasta
-output_tag=flye_polished
+# assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_flye.fasta
+# output_tag=flye_polished
 
-# assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_canu.fasta
-# output_tag=canu_polished
+assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_canu.fasta
+output_tag=canu_polished
 
 # WITH ORIGINAL ASSEMBLIES (OPTIONAL)
 # assembly=${course_dir}/results/2_assembly_1_flye/pacbio/assembly.fasta
@@ -66,4 +66,4 @@ python /software/UHTS/Quality_control/quast/4.6.0/bin/quast.py \
 -R ${ref_genome} \
 -e -m 3000 -i 500 -x 7000 -t 8 \
 -l ${output_tag}_ref ${assembly}
-# --features ${ref_features} --> not in quast 4.6.0
+# --features ${ref_features} --> not supported in quast 4.6.0
