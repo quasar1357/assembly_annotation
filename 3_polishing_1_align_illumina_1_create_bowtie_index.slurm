@@ -22,10 +22,13 @@ mkdir ${output_dir}
 cd ${output_dir}
 
 # Define input assembly and create index
+
+# FOR FLYE
 assembly=${course_dir}/results/2_assembly_1_flye/pacbio/assembly.fasta
 assembly_tag=bt2_flye
 bowtie2-build ${assembly} ${assembly_tag}
 
+# FOR CANU
 assembly=${course_dir}/results/2_assembly_2_canu/pacbio/canu.contigs.fasta
 assembly_tag=bt2_canu
 bowtie2-build ${assembly} ${assembly_tag}

@@ -20,28 +20,33 @@ course_dir=/data/users/rschwob/01_assembly_annotation_course
 working_dir=${course_dir}/results/3_polishing_1_align_illumina
 
 # Define input and output files and run conversion to BAM including sorting and indexing (for both assemblies)
+# Commands & options:
+# view: views and converts SAM/BAM/CRAM files
+    # "-b": output as BAM
+# "sort": Sort alignments by leftmost coordinates, or by read name when -n is used. 
+    # "-o": Write final output to FILE rather than standard output
+
+# FOR FLYE
 assembly_tag=bt2_flye
 sam_file=${working_dir}/${assembly_tag}.sam
 bam_unsorted=${working_dir}/${assembly_tag}_unsorted.bam
 bam_file=${working_dir}/${assembly_tag}.bam
 samtools view -b ${sam_file} > ${bam_unsorted}
-# "-b": output as BAM
 samtools sort ${bam_unsorted} -o ${bam_file}
-# "sort": Sort alignments by leftmost coordinates, or by read name when -n is used. 
-# "-o": Write final output to FILE rather than standard output
 samtools index ${bam_file}
 rm ${bam_unsorted}
 rm ${sam_file}
 
+# FOR CANU
 assembly_tag=bt2_canu
 sam_file=${working_dir}/${assembly_tag}.sam
 bam_unsorted=${working_dir}/${assembly_tag}_unsorted.bam
 bam_file=${working_dir}/${assembly_tag}.bam
 samtools view -b ${sam_file} > ${bam_unsorted}
-# "-b": output as BAM
 samtools sort ${bam_unsorted} -o ${bam_file}
-# "sort": Sort alignments by leftmost coordinates, or by read name when -n is used. 
-# "-o": Write final output to FILE rather than standard output
 samtools index ${bam_file}
 rm ${bam_unsorted}
 rm ${sam_file}
+
+
+

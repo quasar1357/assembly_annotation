@@ -26,6 +26,7 @@ ref_genome=${course_dir}/references/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa
 ref_features=${course_dir}/references/TAIR10_GFF3_genes.gff
 
 # Define input file and options
+# NOTE: CHOOSE THE ONE TO USE (OUT-COMMENT THE OTHERS)
 
 # WITH POLISHED ASSEMBLIES
 assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_flye.fasta
@@ -45,20 +46,24 @@ output_tag=flye_polished
 # Options:
     # -R <path>: Reference genome file. If this is omitted, QUAST will only report the metrics that can be evaluated without a reference.
     # --est-ref-size <int>: Estimated reference genome size (in bp) for computing NGx statistics. Used only if no reference genome file is specified.
-    # --eukaryote (-e): Affects gene finding, conserved orthologs finding and contig alignment; By default, QUAST assumes circular genome, this option indicates that the genome is not circular.
-    # --large: Genome is large (typically > 100 Mbp).In particular, imposes --eukaryote --min-contig 3000 --min-alignment 500 --extensive-mis-size 7000 (can be overridden manually with the corresponding options).
+    # [--large: New shortcut in quast 5. Genome is large (typically > 100 Mbp). Use optimal parameters for evaluation of large genomes. Affects speed and accuracy. Imposes the following options:]
+        # --eukaryote (-e): Genome is eukaryotic. Affects gene finding, conserved orthologs finding and contig alignment; By default, QUAST assumes circular genome, this option indicates that the genome is not circular.
+        # --min-contig (-m) 3000: Lower threshold for contig length
+        # --min-alignment (-i) 500: Nucmer's parameter: the minimum alignment length
+        # --extensive-mis-size (-x) 7000: Lower threshold for extensive misassembly size. All relocations with inconsistency less than extensive-mis-size are counted as local misassemblies.
     # --threads (-t) <int>: Maximum number of threads. Default = 25% of all available CPUs but >= 1. If QUAST fails to determine the number of CPUs, max. threads number is set to 4. 
     # --labels (-l) <label,label...>: Human-readable assembly names
-    # --features (-g) <path>: File with genomic feature positions in the reference genome. Otherwise, all features from the file will be considered.  
+    # [--features (-g) <path>: New in quast 5. File with genomic feature positions in the reference genome. Otherwise, all features from the file will be considered.]
 
 # WITHOUT REFERENCE
 python /software/UHTS/Quality_control/quast/4.6.0/bin/quast.py \
---est-ref-size 130m \
--e -t 8 --large \
+--est-ref-size 130000000 \
+-e -m 3000 -i 500 -x 7000 -t 8 \
 -l ${output_tag}_no_ref ${assembly}
 
 # WITH REFERENCE
 python /software/UHTS/Quality_control/quast/4.6.0/bin/quast.py \
--R ${ref_genome} --features ${ref_features} \
--e -t 8 --large \
+-R ${ref_genome} \
+-e -m 3000 -i 500 -x 7000 -t 8 \
 -l ${output_tag}_ref ${assembly}
+# --features ${ref_features} --> not in quast 4.6.0

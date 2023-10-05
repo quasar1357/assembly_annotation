@@ -25,10 +25,12 @@ cd ${output_dir}
 cp -r /software/SequenceAnalysis/GenePrediction/augustus/3.3.3.1/config augustus_config
 export AUGUSTUS_CONFIG_PATH=./augustus_config
 
-# # Define input file and options
-# assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_flye.fasta
-# output_tag=flye_polished
-# assembly_type=genome
+# Define input file and options
+# NOTE: CHOOSE THE ONE TO USE (OUT-COMMENT THE OTHERS)
+
+assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_flye.fasta
+output_tag=flye_polished
+assembly_type=genome
 
 # assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_canu.fasta
 # output_tag=canu_polished
@@ -38,17 +40,15 @@ export AUGUSTUS_CONFIG_PATH=./augustus_config
 # output_tag=flye_original
 # assembly_type=genome
 
-assembly=${course_dir}/results/2_assembly_2_canu/pacbio/canu.contigs.fasta
-output_tag=canu_original
-assembly_type=genome
+# assembly=${course_dir}/results/2_assembly_2_canu/pacbio/canu.contigs.fasta
+# output_tag=canu_original
+# assembly_type=genome
 
 # assembly=${course_dir}/results/2_assembly_3_trinity/Trinity.fasta
 # output_tag=trinity_RNA
 # assembly_type=transcriptome # IMPORTANT TO HAVE TRANSCRIPTOME HERE !
 
 # Run busco
-busco --lineage_dataset brassicales_odb10 --cpu 4 \
--i ${assembly} -o ${output_tag} --mode ${assembly_type} 
 # Options:
     # --lineage_dataset: can be a dataset name, e.g. bacteria_odb10, (recommended usage) -> BUSCO will automatically download and version the corresponding dataset
     # --mode: genome, transcriptome or proteins, depending on the assembly
@@ -56,6 +56,8 @@ busco --lineage_dataset brassicales_odb10 --cpu 4 \
     # -i (input): Input sequence file in FASTA format -> assembled genome or transcriptome (DNA), or protein sequences from an annotation
     # -o (outuput): Output folders and files will be labelled with this name. WARNING: do not provide a path
 
+busco --lineage_dataset brassicales_odb10 --cpu 4 \
+-i ${assembly} -o ${output_tag} --mode ${assembly_type} 
 
-# Remove the copied config
+# Remove the copied temporary config files
 rm -r ./augustus_config
