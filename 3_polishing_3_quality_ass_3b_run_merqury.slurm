@@ -15,15 +15,14 @@
 # Define input and output directories
 course_dir=/data/users/rschwob/01_assembly_annotation_course
 meryl_dir=${course_dir}/results/3_polishing_3_quality_assessment_3_merqury/illumina.meryl
-output_dir=${course_dir}/results/3_polishing_3_quality_assessment_3_merqury
-mkdir ${output_dir}
-cd ${output_dir}
+output_parent_dir=${course_dir}/results/3_polishing_3_quality_assessment_3_merqury
+# mkdir ${output_parent_dir}
 
 # Define input file and options
 # NOTE: CHOOSE THE ONE TO USE (OUT-COMMENT THE OTHERS)
 
-assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_flye.fasta
-output_tag=flye_polished
+# assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_flye.fasta
+# output_tag=flye_polished
 
 # assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_canu.fasta
 # output_tag=canu_polished
@@ -31,13 +30,13 @@ output_tag=flye_polished
 # assembly=${course_dir}/results/2_assembly_1_flye/pacbio/assembly.fasta
 # output_tag=flye_original
 
-# assembly=${course_dir}/results/2_assembly_2_canu/pacbio/canu.contigs.fasta
-# output_tag=canu_original
-
-# Change permisson of assembly otherwise there is an error (I did not fully understand why) and go to folder where results should be stored.
-# chmod ugo+rwx ${assembly}
+assembly=${course_dir}/results/2_assembly_2_canu/pacbio/canu.contigs.fasta
+output_tag=canu_original
 
 # Run merqury
+output_dir=${output_parent_dir}/${output_tag}
+mkdir ${output_dir}
+cd ${output_dir}
 apptainer exec \
 --bind ${course_dir} \
 /software/singularity/containers/Merqury-1.3-1.ubuntu20.sif \
