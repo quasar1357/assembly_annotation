@@ -10,7 +10,7 @@ This project is part of the courses "Genome assembly" (473637) and "Organization
 
 The general idea is to perform an entire assembly and annotation based on whole genome NGS data of *Arabidopsis thaliana*.
 
-Goals:
+**Goals**:
 1) learn the theory of algorithmic assembly principles
 2) apply it to data sets of both model & non-model organisms
 3) assess the quality along the complete process from data generation to the genome/transcriptome assembly itself
@@ -29,7 +29,7 @@ Jiao WB, Schneeberger K. Chromosome-level assemblies of multiple Arabidopsis gen
 - Dataset: 3
 - Group: 4
 
-It is itself composed of three types of raw data:
+This dataset is itself composed of three types of raw data:
 
 1) Whole genome Illumina (Illumina)
 2) Whole genome PacBio (pacbio)
@@ -63,9 +63,9 @@ It is itself composed of three types of raw data:
 ### 3) Polishing of Pacbio assemblies using precise Illumina reads
     Goal:       Improve draft assemblies by genome polishing using Illumina reads
                 Evaluate quality of assemblies (before and after polishing)
-    Software:   bowtie 2.3.4.1 (align Illumina reads to Assemblies)
-                samtools 1.10 (convert SAM to BAM)
-                pilon 1.22 (polishing)
+    Software:   bowtie 2.3.4.1 (align Illumina reads to assemblies)
+                samtools 1.10 (convert SAM to BAM, sort and index)
+                pilon 1.22 (polish assemblies using Illumina short reads)
                 busco 4.1.4 (evaluate quality of assemblies)
                 quast 4.6.0 (evaluate quality of assemblies)
                 canu 2.1.1 (create meryl db)
