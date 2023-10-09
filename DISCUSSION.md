@@ -11,10 +11,11 @@
 3) Bonus: Why are we using canonical k-mers? (use Google)
 
 ## 2 - Assembly
+
+## 3 - Assembly polishing and evaluation
 ### Polishing
 1) How much does the polishing improve your assemblies (run the assembly evaluations on the polished and non-polished assemblies)?
 
-## 3 - Assembly polishing and evaluation
 ### BUSCO
 1) How do your genome assemblies look according to your BUSCO results? Is one genome assembly better than the other?
 2) How does your transcriptome assembly look? Are there many duplicated genes? Can you explain the differences with the whole genome assemblies?

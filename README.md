@@ -81,7 +81,8 @@ This dataset is itself composed of three types of raw data:
     Input:      Assemblies (fasta files)
                 Illumina short read raw data (fastq files)
                 Reference genome (for quast)
-    Output:     Polished assemblies
+    Output:     Alignment of Illumina reads onto Pacbio assemblies (BAM files, sorted and indexed)
+                Polished assemblies
                 Evaluation of quality of assemblies (busco, quast and merqury)
 
 ### 4) Comparing Genomes
