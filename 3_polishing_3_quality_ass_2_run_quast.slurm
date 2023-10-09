@@ -25,22 +25,21 @@ cd ${output_dir}
 ref_genome=${course_dir}/references/Arabidopsis_thaliana.TAIR10.dna.toplevel.fa
 ref_features=${course_dir}/references/TAIR10_GFF3_genes.gff
 
-# Define input file and options
-# NOTE: CHOOSE THE ONE TO USE (OUT-COMMENT THE OTHERS)
+# Define input file(s) and label(s)
 
 # WITH POLISHED ASSEMBLIES
-# assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_flye.fasta
-# output_tag=flye_polished
+assembly1=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_flye.fasta
+output_tag1=flye_polished
 
-assembly=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_canu.fasta
-output_tag=canu_polished
+assembly2=${course_dir}/results/3_polishing_2_pilon/pilon_bt2_canu.fasta
+output_tag2=canu_polished
 
 # WITH ORIGINAL ASSEMBLIES (OPTIONAL)
-# assembly=${course_dir}/results/2_assembly_1_flye/pacbio/assembly.fasta
-# output_tag=flye_original
+# assembly3=${course_dir}/results/2_assembly_1_flye/pacbio/assembly.fasta
+# output_tag3=flye_original
 
-# assembly=${course_dir}/results/2_assembly_2_canu/pacbio/canu.contigs.fasta
-# output_tag=canu_original
+# assembly4=${course_dir}/results/2_assembly_2_canu/pacbio/canu.contigs.fasta
+# output_tag4=canu_original
 
 # Run quast
 # Options:
@@ -59,11 +58,11 @@ output_tag=canu_polished
 python /software/UHTS/Quality_control/quast/4.6.0/bin/quast.py \
 --est-ref-size 130000000 \
 -e -m 3000 -i 500 -x 7000 -t 8 \
--l ${output_tag}_no_ref ${assembly}
+-l ${output_tag1}_no_ref,${output_tag2}_no_ref ${assembly1} ${assembly2}
 
 # WITH REFERENCE
 python /software/UHTS/Quality_control/quast/4.6.0/bin/quast.py \
 -R ${ref_genome} \
 -e -m 3000 -i 500 -x 7000 -t 8 \
--l ${output_tag}_ref ${assembly}
+-l ${output_tag1}_no_ref,${output_tag2}_no_ref ${assembly1} ${assembly2}
 # --features ${ref_features} --> not supported in quast 4.6.0
