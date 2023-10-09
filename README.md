@@ -19,7 +19,7 @@ The general idea is to perform an entire assembly and annotation based on whole 
 
 ## Dataset
 
-The datasets used originate from:
+The dataset originates from:
 
 Jiao WB, Schneeberger K. Chromosome-level assemblies of multiple Arabidopsis genomes reveal hotspots of rearrangements with altered evolutionary dynamics. Nature Communications. 2020;11:1–10. Available from: http://dx.doi.org/10.1038/s41467-020-14779-y
 
@@ -27,9 +27,9 @@ Jiao WB, Schneeberger K. Chromosome-level assemblies of multiple Arabidopsis gen
 
 - Accession: Ler
 - Dataset: 3
-- Group: 4
+- (Group for presentation: 4)
 
-This dataset is itself composed of three types of raw data:
+This dataset is itself composed of three types of **raw data**:
 
 1) Whole genome Illumina (Illumina)
 2) Whole genome PacBio (pacbio)
