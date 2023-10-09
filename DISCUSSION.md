@@ -61,7 +61,7 @@
 
 2) How does your **transcriptome assembly** look? Are there many duplicated genes? Can you explain the differences with the whole genome assemblies?
 
-    n = 4596 (for all analyses) BUSCOS:\
+    n = 4596 (for all analyses) BUSCOS:
     
     _ | C = complete | S = Complete and single-copy | D = Complete and duplicated | F = Fragmented | M = Missing |
     ---|---|---|---|---|--- |
@@ -69,8 +69,8 @@
 
     **Explanation**:
     The mRNAs are of course expected to be...
-    - ... specific for the current expression\
-    - ... expected to be present in high numbers of copies each\
+    - ... specific for the current expression
+    - ... expected to be present in high numbers of copies each
     - ... possibly present in different forms (splice variants etc.)
 
 
@@ -84,7 +84,7 @@
 
     Also the N- and L-values are the same for polished and original assemblies:
 
-    #| flye (ref = no-ref) | canu (ref = no-ref)
+    _ | flye (ref = no-ref) | canu (ref = no-ref)
     --- | --- | ---
     N50	| 13006968 | 5793939
     NG50 | 6204915 | 5755049
@@ -95,7 +95,7 @@
     L75 | 11 | 18
 
     However, the NG- and LG-values differ:
-    # | flye_polished_no_ref | flye_polished_ref | canu_polished_no_ref | canu_polished_ref
+    _ | flye_polished_no_ref | flye_polished_ref | canu_polished_no_ref | canu_polished_ref
     --- | --- | --- | --- | ---
     NG50 | 6204915 | 13006968 | FALSE | 5755049 | 5793939
     N75 | 2762381 | 2762381 | TRUE | 1302541 | 1302541
@@ -108,7 +108,7 @@
 
 2) What additional information you get if you have a reference available?
 
-    # | flye (ref) | canu (ref)
+    _ | flye (ref) | canu (ref)
     --- | --- | ---
     #misassemblies | 788 | 946
     #misassembled contigs | 81 | 145
