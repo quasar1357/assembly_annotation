@@ -1,34 +1,34 @@
 # Genome assembly of *A. thaliana* - questions of interest
 ## 1 - Read quality and statistics
 ### QC
-1) What are the read lengths of the different datasets?
+1) What are the **read lengths** of the different datasets?
 
     Illumina: 101 [#Seq: 43'225'638]\
     Pacbio: 50-43'512 (ERR3415826) and 50-46'330 (ERR3415825) [#Seq: 578'098 and 549'679]\
     RNAseq: 101 [#Seq: 18'094'147]
 
-2) What kind of coverage do you expect from the Pacbio and the Illumina WGS reads? (hint: lookup the expected genome size of Arabidopsis thaliana)
+2) What kind of **coverage** do you expect from the Pacbio and the Illumina WGS reads? (hint: lookup the expected genome size of Arabidopsis thaliana)
 
     cov = bp_seq / bp_tot = (#reads * read_length) / bp_tot \
     Illumina: cov = (43'225'638 * 101) / 130'000'000 = 33.6 \
     Pacbio: cov = (~550'000 * ~23'000) / 130'000'000 = 97.3
 
-3) Do all datasets have information on base quality?
+3) Do all datasets have information on **base quality**?
 
     No, only Illumina and RNAseq (which is also Illumina), but not Pacbio
 
 ### GenomeScope
-1) Is the estimated genome size expected?
+1) Is the estimated **genome size** expected?
 
     Illumina: 131'241'237bp --> yes, well in the range of known genome size \
     Pacbio: 31'720'177bp --> no!
 
-2) Is the percentage of heterozygousity expected?
+2) Is the percentage of **heterozygousity** expected?
 
     Illumina: 0.118% --> yes\
     Pacbio: 4.46% --> no!
 
-3) Bonus: Why are we using canonical k-mers? (use Google)
+3) Bonus: Why are we using **canonical k-mers**? (use Google)
 
     When counting k-mers in sequencing reads, there is no real way to differentiate between k-mers and their reverse complement: seeing e.g. ACGGT is equivalent to seeing ACCGT, since the latter is the reverse complement of the former and the sequenced reads don't originate from a prescribed strand of the DNA.\
     Using "cannonical k-mers" takes this into account: The -C command in jellyfish considers both a k-mer and its reverse complement as equivalent, and associates the count for both with the k-mer among the two that is lexicographically smaller. So, for example, above only ACCGT would be stored and its count would be equal to the number of occurrences of both ACCGT and ACGGT. If -C is not included, these k-mers will be treated separately. There's nothing "wrong" with this, per-se, but it may not be what you want. adapted from biostars
@@ -37,9 +37,9 @@
 
 ## 3 - Assembly polishing and evaluation
 ### Polishing
-1) How much does the polishing improve your assemblies (run the assembly evaluations on the polished and non-polished assemblies)?
+1) How much does the **polishing improve** your assemblies (run the assembly evaluations on the polished and non-polished assemblies)?
 
-    Yes, especially canu profitted. See below, notably fragmented and missing BUSCOs, and quast mismatches.
+    Yes, especially canu profitted. See below, notably fragmented and missing BUSCOs, as well as quast mismatches.
 
 ### BUSCO (fly vs. canu, original vs. polished; all no_ref)
 1) How do your **genome assemblies** look according to your BUSCO results? Is one genome assembly better than the other?
@@ -75,7 +75,7 @@
 
 
 ### QUAST (flye vs. canu, original vs. polished, no_ref vs. ref)
-1) How do your genome assemblies look according to your QUAST results? Is one genome assembly better than the other?
+1) How do your genome assemblies look according to your **QUAST results**? Is one genome assembly better than the other?
 
     _| flye_original | flye_polished | canu_original | canu_polished
     --- | --- | --- | --- | ---
@@ -117,7 +117,7 @@
     - **If I have to choose one, I would choose flye**
 </p>
 
-2) What additional information you get if you have a reference available?
+2) What additional information you get if you have a **reference** available?
 
     - NAx, NGAx, LGAx; e.g. NAx = Nx where aligned blocks are counted instead of contig lengths
     - Misassembly statistics
@@ -132,16 +132,16 @@
 
 
 ### Merqury (fly vs. canu, original vs. polished; all no_ref)
-1) What are the consensus quality QV and error rate values of your assemblies?
+1) What are the **consensus quality QV** and **error rate** values of your assemblies?
 
-2) What is the estimated completeness of your assemblies?
+2) What is the estimated **completeness** of your assemblies?
 
     _ | QV | orig. | pol. | Error rate | orig. | pol. | Completeness (%) | orig. | pol.
     ---|---|---|---|---|---|---|---|---|---
     **flye** || 37.0907 | **40.8411** || 0.000195402 | **8.23926e-05** || 95.6976 | **95.9899**
     **canu** || 35.1611  | **42.6788** || 0.000304714 | **5.39661e-05** || 95.4351 | **96.0191**
 
-3) How does your copy-number spectra look like? Do they confirm the expected coverage?
+3) How does your copy-number **spectra** look like? Do they confirm the expected coverage?
 
     The spectra all look very similar. Therefore, only "flye polished" is shown here:
 
