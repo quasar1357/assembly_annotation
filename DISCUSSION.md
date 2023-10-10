@@ -41,7 +41,7 @@
 
     See below, evaluation with BUSCO and with Merqury
 
-### BUSCO (fly vs. canu, polished vs. original; all no_ref)
+### BUSCO (fly vs. canu, original vs. polished; all no_ref)
 1) How do your **genome assemblies** look according to your BUSCO results? Is one genome assembly better than the other?
 
     n = 4596 (for all analyses) BUSCOS:\
@@ -52,7 +52,7 @@
     flye | | 4532  | 4543 | | 4488 | 4499 | | 44  | 44  | | 5 | 3 | | 59 | 50 |
     canu | | 4485 | 4542 | | 4435 | 4496 | | 50 | 46 | | 22 | 6 | | 89 | 48 |
 
-    ![Alt text](image-5.png)
+    ![Alt text](busco.png)
 
     **Conclusions**:
     - They both look overall very similar and good quality
@@ -70,70 +70,68 @@
     **Explanation**:
     The mRNAs are of course expected to be...
     - ... specific for the current expression
-    - ... expected to be present in high numbers of copies each
+    - ... expected to be present in variable numbers of copies each
     - ... possibly present in different forms (splice variants etc.)
 
 
-### QUAST (ref vs. no_ref, fly vs. canu; only polished)
+### QUAST (flye vs. canu, original vs. polished, no_ref vs. ref)
 1) How do your genome assemblies look according to your QUAST results? Is one genome assembly better than the other?
 
-    The distribution of the contigs does not change and is as follows:
-
-    ![Alt text](image-1.png)
-    ![Alt text](image-2.png)
-
-    Also the N- and L-values are the same for polished and original assemblies:
-
-    _ | flye (ref = no-ref) | canu (ref = no-ref)
-    --- | --- | ---
-    N50	| 13006968 | 5793939
-    NG50 | 6204915 | 5755049
-    N75 | 2762381 | 1302541
-    NG75 | 2432852 | 1107500
-    L50 | 4 | 7
-    LG50 | 5 | 8
-    L75 | 11 | 18
-
-    However, the NG- and LG-values differ:
-    _ | flye_polished_no_ref | flye_polished_ref | canu_polished_no_ref | canu_polished_ref
+    _| flye_original | flye_polished | canu_original | canu_polished
     --- | --- | --- | --- | ---
-    NG50 | 6204915 | 13006968 | FALSE | 5755049 | 5793939
-    N75 | 2762381 | 2762381 | TRUE | 1302541 | 1302541
-    NG75 | 2432852 | 2762381 | FALSE | 1107500 | 1528297
-    L50 | 4 | 4 | TRUE | 7 | 7
-    LG50 | 5 | 4 | FALSE | 8 | 7
-    L75 | 11 | 11 | TRUE | 18 | 18
-    LG75 | 14 | 11 | FALSE | 23 | 17
+    **Genome statistics** ||||
+    Genome fraction (%) | 88.377 | 88.372 | 88.598 | 88.622
+    Duplication ratio | 1.023 | 1.024 | 1.045 | 1.045
+    Largest alignment | 3834122 | 3834741 | 3832991 | 3834587
+    Total aligned length | 108239445 | 108246962 | 110797293 | 110866378
+    NGA50 | 480262 | 480676 | 437326 | 437577
+    LGA50 | 55 | 55 | 55 | 55
+    **Misassemblies** |  |  |  | 
+    "# misassemblies" | 787 | 788 | 941 | 946
+    Misassembled contigs length | 114854247 | 114882441 | 116478486 | 116470711
+    **Mismatches** |  |  |  | 
+    "# mismatches per 100 kbp" | 595.06 | 596.92 | 590.73 | 593.51
+    "# indels per 100 kbp" | 154.72 | 138.13 | 176.11 | 138.83
+    "# N's per 100 kbp" | 1 | 0.63 | 0 | 0
+    **Statistics without reference** |  |  |  | 
+    "# contigs" | 222 | 222 | 263 | 263
+    Largest contig | 20507362 | 20511527 | 12973239 | 12979362
+    Total length | 120302467 | 120317193 | 122829857 | 122866659
+    Total length (>= 1000 bp) | 120481303 | 120496040 | 122829857 | 122866659
+    Total length (>= 10000 bp) | 119843676 | 119858316 | 122729360 | 122766579
+    Total length (>= 50000 bp) | 118328916 | 118345850 | 118623136 | 118673382
 
+    ![Alt text](quast.png)
+
+    **Observations**:
+    - General alignment statistics are similar
+    - NGA50 is better in flye (however, diff. is smaller in NGA75: 136'717 vs. 130'075)
+    - LGA50 is the same (however, LGA75 is slightly better in flye: 172 vs. 177)
+    - Misassembly statistics are overall better with flye
+    - Mismatches are very similar (in this regard, canu benefitted a lot from polishing)
+
+    **Conclusions**:
+    - Contiguity slightly better with flye (NGAx/LGAx)
+    - Completeness: similar
+    - Correctness: better with flye (misassemblies; but hard to tell if not biological reasons!)
+    - **If I have to choose one, I would choose flye**
+</p>
 
 2) What additional information you get if you have a reference available?
 
-    _ | flye (ref) | canu (ref)
-    --- | --- | ---
-    #misassemblies | 788 | 946
-    #misassembled contigs | 81 | 145
-    Misassembled contigs length | 114882441 | 116470711
-    #local misassemblies | 4509 | 5008
-    #unaligned mis. contigs | 36 | 30
-    #unaligned contigs | 8 + 126 part | 8 + 168 part
-    Unaligned length | 12078002 | 11990937
-    Genome fraction (%) | 88.372 | 88.622
-    Duplication ratio | 1.024 | 1.045
-    #mismatches per 100 kbp | 596.92 | 593.51
-    #indels per 100 kbp | 138.13 | 138.83
-    Largest alignment | 3834741 | 3834587
-    Total aligned length | 108246962 | 110866378
-    NA50 | 455473 | 415384
-    NGA50 | 480676 | 437577
-    NA75 | 130140 | 106745
-    NGA75 | 136717 | 130075
-    LA50 | 56 | 58
-    LGA50 | 55 | 55
-    LA75 | 176 | 197
-    LGA75 | 172 | 177
+    - NAx, NGAx, LGAx; e.g. NAx = Nx where aligned blocks are counted instead of contig lengths
+    - Misassembly statistics
+    - Unaligned statistics
+    - Details about mismatches (such as #indels, indel length etc.)
+    - Alignment statistics:
+        - Genome fraction
+        - Duplication ratio
+        - Largest alignment
+        - Total aligned length
 
 
-### Merqury (fly vs. canu, polished vs. original; all no_ref)
+
+### Merqury (fly vs. canu, original vs. polished; all no_ref)
 1) What are the consensus quality QV and error rate values of your assemblies?
 2) What is the estimated completeness of your assemblies?
 3) How does your copy-number spectra look like? Do they confirm the expected coverage?
