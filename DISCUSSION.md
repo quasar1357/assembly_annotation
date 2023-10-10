@@ -39,7 +39,7 @@
 ### Polishing
 1) How much does the **polishing improve** your assemblies (run the assembly evaluations on the polished and non-polished assemblies)?
 
-    Yes, especially canu profited. See below, notably fragmented and missing BUSCOs, as well as quast mismatches.
+    Yes, especially canu profited. See below, notably fragmented and missing BUSCOs, as well as QUAST mismatches.
 
 ### BUSCO (fly vs. canu, original vs. polished; all no_ref)
 1) How do your **genome assemblies** look according to your BUSCO results? Is one genome assembly better than the other?
@@ -49,7 +49,7 @@
 
     _ |C | orig. | pol. | S | orig. | pol. | D | orig. | pol. | F | orig. | pol. | M | orig. | pol. | 
     ---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-    **flye** | | 4532  | **4543** | | 4488 | **4499** | | 44  | **44**  | | 5 | **3** | | 59 | **50** |
+    **flye** | | 4532 | **4543** | | 4488 | **4499** | | 44 | **44** | | 5 | **3** | | 59 | **50** |
     **canu** | | 4485 | **4542** | | 4435 | **4496** | | 50 | **46** | | 22 | **6** | | 89 | **48** |
 
     ![Alt text](busco.png)
@@ -86,14 +86,14 @@
     Total aligned length | 108239445 | 108246962 | 110797293 | 110866378
     NGA50 | 480262 | 480676 | 437326 | 437577
     LGA50 | 55 | 55 | 55 | 55
-    **Misassemblies** |  |  |  | 
+    **Misassemblies** |||| 
     "# misassemblies" | 787 | 788 | 941 | 946
     Misassembled contigs length | 114854247 | 114882441 | 116478486 | 116470711
-    **Mismatches** |  |  |  | 
+    **Mismatches** |||| 
     "# mismatches per 100 kbp" | 595.06 | 596.92 | 590.73 | 593.51
     "# indels per 100 kbp" | 154.72 | 138.13 | 176.11 | 138.83
     "# N's per 100 kbp" | 1 | 0.63 | 0 | 0
-    **Statistics without reference** |  |  |  | 
+    **Statistics without reference** |||| 
     "# contigs" | 222 | 222 | 263 | 263
     Largest contig | 20507362 | 20511527 | 12973239 | 12979362
     Total length | 120302467 | 120317193 | 122829857 | 122866659
