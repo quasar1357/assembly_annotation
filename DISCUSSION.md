@@ -49,8 +49,8 @@
 
     _ |C | orig. | pol. | S | orig. | pol. | D | orig. | pol. | F | orig. | pol. | M | orig. | pol. | 
     ---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-    flye | | 4532  | 4543 | | 4488 | 4499 | | 44  | 44  | | 5 | 3 | | 59 | 50 |
-    canu | | 4485 | 4542 | | 4435 | 4496 | | 50 | 46 | | 22 | 6 | | 89 | 48 |
+    **flye** | | 4532  | **4543** | | 4488 | **4499** | | 44  | **44**  | | 5 | **3** | | 59 | **50** |
+    **canu** | | 4485 | **4542** | | 4435 | **4496** | | 50 | **46** | | 22 | **6** | | 89 | **48** |
 
     ![Alt text](busco.png)
 
@@ -134,22 +134,17 @@
 ### Merqury (fly vs. canu, original vs. polished; all no_ref)
 1) What are the consensus quality QV and error rate values of your assemblies?
 
-    A = k-mers uniquely found in the assembly, B = k-mers found in both assembly and the read set
-    assembly | A | B | QV | Error rate
-    ---|---|---|---|---
-    flye_original | 446638 | 120513519 | **37.0907** | **0.000195402**
-    flye_polished | 188543 | 120528704 | **40.8411** | **8.23926e-05**
-    canu_original | 709157 | 122825123 | **35.1611** | **0.000304714**
-    canu_polished | 125916 | 122861925 | **42.6788** | **5.39661e-05**
+    _ | QV | orig. | pol. | Error rate | orig. | pol.
+    ---|---|---|---|---|---|---
+    **flye** || 37.0907 | **40.8411** || 0.000195402 | **8.23926e-05**
+    **canu** || 35.1611  | **42.6788** || 0.000304714 | **5.39661e-05**
 
 2) What is the estimated completeness of your assemblies?
 
-    assembly | solid k-mers in the assembly | Total solid k-mers in the read set | Completeness (%)
-    ---|---|---|---
-    flye_original | 106421566 | 111206079 | **95.6976**
-    flye_polished | 106746555 | 111206079 | **95.9899**
-    canu_original | 106129637 | 111206079 | **95.4351**
-    canu_polished | 106779088 | 111206079 | **96.0191**
+    Completeness (%) | orig. | pol.
+    ---|---|---
+    flye | 95.6976 | **95.9899**
+    canu | 95.4351 | **96.0191**
 
 3) How does your copy-number spectra look like? Do they confirm the expected coverage?
 
