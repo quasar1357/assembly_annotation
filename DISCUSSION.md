@@ -39,7 +39,7 @@
 ### Polishing
 1) How much does the polishing improve your assemblies (run the assembly evaluations on the polished and non-polished assemblies)?
 
-    See below, evaluation with BUSCO and with Merqury
+    Yes, especially canu profitted. See below, notably fragmented and missing BUSCOs, and quast mismatches.
 
 ### BUSCO (fly vs. canu, original vs. polished; all no_ref)
 1) How do your **genome assemblies** look according to your BUSCO results? Is one genome assembly better than the other?
@@ -133,9 +133,37 @@
 
 ### Merqury (fly vs. canu, original vs. polished; all no_ref)
 1) What are the consensus quality QV and error rate values of your assemblies?
+
+    A = k-mers uniquely found in the assembly, B = k-mers found in both assembly and the read set
+    assembly | A | B | QV | Error rate
+    ---|---|---|---|---
+    flye_original | 446638 | 120513519 | **37.0907** | **0.000195402**
+    flye_polished | 188543 | 120528704 | **40.8411** | **8.23926e-05**
+    canu_original | 709157 | 122825123 | **35.1611** | **0.000304714**
+    canu_polished | 125916 | 122861925 | **42.6788** | **5.39661e-05**
+
 2) What is the estimated completeness of your assemblies?
+
+    assembly | solid k-mers in the assembly | Total solid k-mers in the read set | Completeness (%)
+    ---|---|---|---
+    flye_original | 106421566 | 111206079 | **95.6976**
+    flye_polished | 106746555 | 111206079 | **95.9899**
+    canu_original | 106129637 | 111206079 | **95.4351**
+    canu_polished | 106779088 | 111206079 | **96.0191**
+
 3) How does your copy-number spectra look like? Do they confirm the expected coverage?
+
+    The spectra all look very similar. Therefore, only "flye polished" is shown here:
+
+    ![Alt text](merqury_flye_pol.png)
+
+    Peak is at around 29 --> a bit below the expected coverage of 33.6 for illumina reads.
+
 4) Does one assembly perfom better than the other?
+
+    No, in this case, the differences are very subtle.
+
+
 
 ## 4 - Comparing Genomes
 ### nucmer and mummer
