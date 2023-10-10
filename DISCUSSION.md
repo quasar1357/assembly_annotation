@@ -39,7 +39,7 @@
 ### Polishing
 1) How much does the **polishing improve** your assemblies (run the assembly evaluations on the polished and non-polished assemblies)?
 
-    Yes, especially canu profitted. See below, notably fragmented and missing BUSCOs, as well as quast mismatches.
+    Yes, especially canu profited. See below, notably fragmented and missing BUSCOs, as well as quast mismatches.
 
 ### BUSCO (fly vs. canu, original vs. polished; all no_ref)
 1) How do your **genome assemblies** look according to your BUSCO results? Is one genome assembly better than the other?
@@ -56,7 +56,7 @@
 
     **Conclusions**:
     - They both look overall very similar and good quality
-    - Both profitted from polishing, but canu a bit more in that 16 of the 22 fragmented and 41 of the 89 missing BUSCOs could be fixed
+    - Both profited from polishing, but canu a bit more in that 16 of the 22 fragmented and 41 of the 89 missing BUSCOs could be fixed
 </p>
 
 2) How does your **transcriptome assembly** look? Are there many duplicated genes? Can you explain the differences with the whole genome assemblies?
@@ -111,7 +111,7 @@
     - Mismatches are very similar (in this regard, canu benefitted a lot from polishing)
 
     **Conclusions**:
-    - Contiguity slightly better with flye (NGAx/LGAx)
+    - Contiguity: slightly better with flye (NGAx/LGAx)
     - Completeness: similar
     - Correctness: better with flye (misassemblies; but hard to tell if not biological reasons!)
     - **If I have to choose one, I would choose flye**
@@ -147,7 +147,7 @@
 
     ![Alt text](merqury_flye_pol.png)
 
-    Peak is at around 29 --> a bit below the expected coverage of 33.6 for illumina reads.
+    Peak is at around 29 --> a bit below the expected coverage of 33.6 for Illumina reads.
 
 4) Does one assembly perfom better than the other?
 
