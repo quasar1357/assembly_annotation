@@ -134,17 +134,12 @@
 ### Merqury (fly vs. canu, original vs. polished; all no_ref)
 1) What are the consensus quality QV and error rate values of your assemblies?
 
-    _ | QV | orig. | pol. | Error rate | orig. | pol.
-    ---|---|---|---|---|---|---
-    **flye** || 37.0907 | **40.8411** || 0.000195402 | **8.23926e-05**
-    **canu** || 35.1611  | **42.6788** || 0.000304714 | **5.39661e-05**
-
 2) What is the estimated completeness of your assemblies?
 
-    Completeness (%) | orig. | pol.
-    ---|---|---
-    flye | 95.6976 | **95.9899**
-    canu | 95.4351 | **96.0191**
+    _ | QV | orig. | pol. | Error rate | orig. | pol. | Completeness (%) | orig. | pol.
+    ---|---|---|---|---|---|---|---|---|---
+    **flye** || 37.0907 | **40.8411** || 0.000195402 | **8.23926e-05** || 95.6976 | **95.9899**
+    **canu** || 35.1611  | **42.6788** || 0.000304714 | **5.39661e-05** || 95.4351 | **96.0191**
 
 3) How does your copy-number spectra look like? Do they confirm the expected coverage?
 
