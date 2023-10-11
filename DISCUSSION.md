@@ -4,14 +4,17 @@
 1) What are the **read lengths** of the different datasets?
 
     Illumina: 101 [#Seq: 43'225'638]\
-    Pacbio: 50-43'512 (ERR3415826) and 50-46'330 (ERR3415825) [#Seq: 578'098 and 549'679]\
+    Pacbio ERR3415825:  total 3'340'800'486, avg. 6'078 (50-46'330) [#Seq: 549'679]
+    Pacbio ERR3415826: total 4'101'029'001, avg. 7'094 (50-43'512) [#Seq: 578'098]\
     RNAseq: 101 [#Seq: 18'094'147]
 
 2) What kind of **coverage** do you expect from the Pacbio and the Illumina WGS reads? (hint: lookup the expected genome size of Arabidopsis thaliana)
 
     cov = bp_seq / bp_tot = (#reads * read_length) / bp_tot \
     Illumina: cov = (43'225'638 * 101) / 130'000'000 = 33.6 \
-    Pacbio: cov = (~550'000 * ~23'000) / 130'000'000 = 97.3
+    Pacbio ERR3415825: cov = 3'340'800'486 / 130'000'000 = 25.7 \
+    Pacbio ERR3415826: cov = 4'101'029'001 / 130'000'000 = 32.5 \
+    Pacbio mean: cov = **28.6**
 
 3) Do all datasets have information on **base quality**?
 
@@ -45,7 +48,7 @@
 1) How do your **genome assemblies** look according to your BUSCO results? Is one genome assembly better than the other?
 
     n = 4596 (for all analyses) BUSCOS:\
-    C = complete, S = Complete and single-copy, D = Complete and duplicated, F = Fragmented, M = Missing
+    C = Complete, S = Complete and single-copy, D = Complete and duplicated, F = Fragmented, M = Missing
 
     _ |C | orig. | pol. | S | orig. | pol. | D | orig. | pol. | F | orig. | pol. | M | orig. | pol. | 
     ---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -147,7 +150,7 @@
 
     ![Alt text](merqury_flye_pol.png)
 
-    Peak is at around 29 --> a bit below the expected coverage of 33.6 for Illumina reads.
+    Peak is at around 28-29 --> fits the expected coverage of 28.6 really well!
 
 4) Does one assembly perfom better than the other?
 
@@ -158,6 +161,17 @@
 ## 4 - Comparing Genomes
 ### nucmer and mummer
 1) What does the dotplot show and what do the different colors mean?
+
+    It shows locations and directions of regions on the two compared genomes. Forward matches are shown in red, while reverse matches are shown in green. 
+
 2) Do your genome assemblies look very different from the reference genome?
+
+    Yes and no. On first sight it looks kind of "messy" however one can see, that most dots do form a diagonal, or a diagonal could be formed if parts were shifted and/or reversed.
+
 3) How different are the two genome assemblies compared to each other?
+
+    The direct comparison shows that they are very similar!
+
 4) (If you assembled different accessions: Do you see any differences between the accessions?)
+
+    I did not.
