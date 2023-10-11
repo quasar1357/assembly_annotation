@@ -1,5 +1,9 @@
 # Genome assembly of *A. thaliana* - questions of interest
+
+
 ## 1 - Read quality and statistics
+
+
 ### QC
 1) What are the **read lengths** of the different datasets?
 
@@ -20,6 +24,7 @@
 
     No, only Illumina and RNAseq (which is also Illumina), but not Pacbio
 
+
 ### GenomeScope
 1) Is the estimated **genome size** expected?
 
@@ -36,13 +41,16 @@
     When counting k-mers in sequencing reads, there is no real way to differentiate between k-mers and their reverse complement: seeing e.g. ACGGT is equivalent to seeing ACCGT, since the latter is the reverse complement of the former and the sequenced reads don't originate from a prescribed strand of the DNA.\
     Using "cannonical k-mers" takes this into account: The -C command in jellyfish considers both a k-mer and its reverse complement as equivalent, and associates the count for both with the k-mer among the two that is lexicographically smaller. So, for example, above only ACCGT would be stored and its count would be equal to the number of occurrences of both ACCGT and ACGGT. If -C is not included, these k-mers will be treated separately. There's nothing "wrong" with this, per-se, but it may not be what you want. adapted from biostars
 
+
 ## 2 - Assembly
+
 
 ## 3 - Assembly polishing and evaluation
 ### Polishing
 1) How much does the **polishing improve** your assemblies (run the assembly evaluations on the polished and non-polished assemblies)?
 
     Yes, especially canu profited. See below, notably fragmented and missing BUSCOs, as well as QUAST mismatches.
+
 
 ### BUSCO (fly vs. canu, original vs. polished; all no_ref)
 1) How do your **genome assemblies** look according to your BUSCO results? Is one genome assembly better than the other?
@@ -132,8 +140,6 @@
         - Largest alignment
         - Total aligned length
 
-
-
 ### Merqury (fly vs. canu, original vs. polished; all no_ref)
 1) What are the **consensus quality QV** and **error rate** values of your assemblies?
 
@@ -154,8 +160,8 @@
 
 4) Does one assembly perfom better than the other?
 
-    No, in this case, the differences are very subtle.
-
+    QV & error rate: both very good (remember QV of 40 ~99.99%), canu even (slightly) better!
+    Completeness: ~equal, high level
 
 
 ## 4 - Comparing Genomes
@@ -166,7 +172,7 @@
 
 2) Do your genome assemblies look very different from the reference genome?
 
-    Yes and no. On first sight it looks kind of "messy" however one can see, that most dots do form a diagonal, or a diagonal could be formed if parts were shifted and/or reversed.
+    Yes and no. On first sight it looks kind of "messy", however one can see, that most dots do form a diagonal, or a diagonal could be formed if parts were shifted and/or reversed.
 
 3) How different are the two genome assemblies compared to each other?
 
