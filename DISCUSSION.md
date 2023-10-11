@@ -24,12 +24,12 @@
 1) Is the estimated **genome size** expected?
 
     Illumina: 131'241'237bp --> yes, well in the range of known genome size \
-    Pacbio: 31'720'177bp --> no!
+    Pacbio: 31'720'177bp --> no! not hi-fi --> many errors --> same seq treated as seperate ones --> too many kmers
 
 2) Is the percentage of **heterozygousity** expected?
 
     Illumina: 0.118% --> yes\
-    Pacbio: 4.46% --> no!
+    Pacbio: 4.46% --> no! (see above for explanation)
 
 3) Bonus: Why are we using **canonical k-mers**? (use Google)
 
