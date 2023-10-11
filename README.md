@@ -86,11 +86,14 @@ This dataset is itself composed of three types of **raw data**:
                 Evaluation of quality of assemblies (busco, quast and merqury)
 
 ### 4) Comparing Genomes
-    Goal:       
-    Software:   
-    Scripts:    
-    Input:      
-    Output:     
+    Goal:       Compare genomes to reference (find out synteny)
+                Compare genomes to each other
+    Software:   mummer 4.0.0beta1
+    Scripts:    4_compare_genomes_1_run_nucmer.slurm
+                4_compare_genomes_2_run_mummerplot.slurm
+    Input:      Assemblies (fasta files)
+                Reference genome
+    Output:     mummerplots (regions on assemblies/ref. plotted against each other)
 
 ### 5) Annotation
     Goal:       
