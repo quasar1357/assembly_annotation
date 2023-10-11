@@ -86,7 +86,7 @@ This dataset is itself composed of three types of **raw data**:
                 Evaluation of quality of assemblies (busco, quast and merqury)
 
 ### 4) Comparing Genomes
-    Goal:       Compare genomes to reference (find out synteny)
+    Goal:       Compare genomes to reference (evaluate synteny)
                 Compare genomes to each other
     Software:   mummer 4.0.0beta1
     Scripts:    4_compare_genomes_1_run_nucmer.slurm
