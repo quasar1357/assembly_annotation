@@ -8,17 +8,18 @@
 1) What are the **read lengths** of the different datasets?
 
     Illumina: 101 [#Seq: 43'225'638]\
-    Pacbio ERR3415825:  total 3'340'800'486, avg. 6'078 (50-46'330) [#Seq: 549'679]
+    Pacbio ERR3415825:  total 3'340'800'486, avg. 6'078 (50-46'330) [#Seq: 549'679]\
     Pacbio ERR3415826: total 4'101'029'001, avg. 7'094 (50-43'512) [#Seq: 578'098]\
     RNAseq: 101 [#Seq: 18'094'147]
 
 2) What kind of **coverage** do you expect from the Pacbio and the Illumina WGS reads? (hint: lookup the expected genome size of Arabidopsis thaliana)
 
     cov = bp_seq / bp_tot = (#reads * read_length) / bp_tot \
-    Illumina: cov = (43'225'638 * 101) / 130'000'000 = 33.6 \
-    Pacbio ERR3415825: cov = 3'340'800'486 / 130'000'000 = 25.7 \
-    Pacbio ERR3415826: cov = 4'101'029'001 / 130'000'000 = 32.5 \
-    Pacbio mean: cov = **28.6**
+
+    **Illumina**: cov = (43'225'638 * 101) / 130'000'000 = **33.6** \
+    ___Pacbio ERR3415825: cov = 3'340'800'486 / 130'000'000 = 25.7 \
+    ___Pacbio ERR3415826: cov = 4'101'029'001 / 130'000'000 = 32.5 \
+    **Pacbio** mean: cov = **28.6**
 
 3) Do all datasets have information on **base quality**?
 
@@ -80,9 +81,9 @@
 
     **Explanation**:
     The mRNAs are of course expected to be...
-    - ... specific for the current expression
-    - ... expected to be present in variable numbers of copies each
-    - ... possibly present in different forms (splice variants etc.)
+    - ... ***specific*** for the current expression
+    - ... expected to be present in ***variable numbers*** of copies each
+    - ... possibly present in ***different forms*** (splice variants etc.)
 
 
 ### QUAST (flye vs. canu, original vs. polished, no_ref vs. ref)
@@ -117,14 +118,15 @@
     **Observations**:
     - General alignment statistics are similar
     - NGA50 is better in flye (however, diff. is smaller in NGA75: 136'717 vs. 130'075)
+    - Looking at N(G/A)x plots important to confirm that N(G/A)50 is not misleading
     - LGA50 is the same (however, LGA75 is slightly better in flye: 172 vs. 177)
     - Misassembly statistics are overall better with flye
     - Mismatches are very similar (in this regard, canu benefitted a lot from polishing)
 
     **Conclusions**:
-    - Contiguity: slightly better with flye (NGAx/LGAx)
-    - Completeness: similar
-    - Correctness: better with flye (misassemblies; but hard to tell if not biological reasons!)
+    - **Contiguity**: better with **flye** (NGAx/LGAx)
+    - **Completeness**: **similar**
+    - **Correctness**: better with **flye** (misassemblies; but hard to tell if not biological reasons!)
     - **If I have to choose one, I would choose flye**
 </p>
 
@@ -156,27 +158,30 @@
 
     ![Alt text](merqury_flye_pol.png)
 
-    Peak is at around 28-29 --> fits the expected coverage of 28.6 really well!
+    **Interpretation**:
+    - 1 peak --> mostly homozygous (no heterozygous regions assembled seperately) --> good
+    - Peak is at around 28-29 --> fits the expected coverage of 28.6 really well! --> good
+</p>
 
 4) Does one assembly perfom better than the other?
 
-    QV & error rate: both very good (remember QV of 40 ~99.99%), canu even (slightly) better!
-    Completeness: ~equal, high level
+    **QV & error rate**: both **very good** (remember QV of 40 ~99.99%), canu even (slightly) better here!
+    **Completeness**: ~equal, **high** level
 
 
 ## 4 - Comparing Genomes
 ### nucmer and mummer
 1) What does the dotplot show and what do the different colors mean?
 
-    It shows locations and directions of regions on the two compared genomes. Forward matches are shown in red, while reverse matches are shown in green. 
+    It shows locations and directions of regions on the two compared genomes. Forward matches are shown in red, while reverse matches are shown in green. It shows regions of "synteny", i.e. when the order of genes is similar (on large scale).
 
 2) Do your genome assemblies look very different from the reference genome?
 
-    Yes and no. On first sight it looks kind of "messy", however one can see, that most dots do form a diagonal, or a diagonal could be formed if parts were shifted and/or reversed.
+    Yes and no. On first sight it looks kind of "messy", however one can see, that most dots do form a diagonal, or a diagonal could be formed if parts were shifted and/or reversed. Note that there are chromosomes that are split onto multiple contigs, but, importantly, (almost) no contigs that contain regions of multiple chromosomes. The latter would mean that there was probably a misassembly.
 
 3) How different are the two genome assemblies compared to each other?
 
-    The direct comparison shows that they are very similar!
+    The direct comparison shows that they are actually very similar!
 
 4) (If you assembled different accessions: Do you see any differences between the accessions?)
 
