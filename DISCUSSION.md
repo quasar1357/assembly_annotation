@@ -183,9 +183,17 @@
 
     Yes and no. On first sight it looks kind of "messy", however one can see, that most dots do form a diagonal, or a diagonal could be formed if parts were shifted and/or reversed. Note that there are chromosomes that are split onto multiple contigs, but, importantly, (almost) no contigs that contain regions of multiple chromosomes. The latter would mean that there was probably a misassembly.
 
+    **Flye vs. Reference**
+    ![Alt text](ref_flye.png)
+    **Canu vs. Reference**
+    ![Alt text](ref_canu.png)
+
 3) How different are the two genome assemblies compared to each other?
 
     The direct comparison shows that they are actually very similar!
+
+    **Flye vs. Canu**
+    ![Alt text](flye_canu.png)
 
 4) (If you assembled different accessions: Do you see any differences between the accessions?)
 
