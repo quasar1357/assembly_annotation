@@ -95,13 +95,46 @@ This dataset is itself composed of three types of **raw data**:
                 Reference genome
     Output:     mummerplots (regions on assemblies/ref. plotted against each other)
 
-### 5) Annotation
+### 5) Annotation of Transposable Elements (TEs)
+    Goal:       Produce a filtered non-redundant TE library for annotation of structurally intact and fragmented elements
+    Software:   EDTA_v1.9.6
+                TEsorter_1.3.0
+    Scripts:    5_annotate_TEs_1_run_EDTA.slurm
+                5_annotate_TEs_2_sort_TEs_1_grep_copia_gypsy.slurm
+                5_annotate_TEs_2_sort_TEs_2_run_TEsorter.slurm
+                5_annotate_TEs_2_sort_TEs_3_run_TEsorter_on_db.slurm
+    Input:      fasta of best, polished assembly (i.e. flye --> pilon)
+    Output:     EDTA:
+                  fasta (.mod.EDTA.TElib.fa)
+                  gff (.mod.EDTA.TEanno.gff3)
+                  summary (.mod.EDTA.TEanno.sum)
+                  gff of intact only (.mod.EDTA.intact.gff3)
+                  comparison to ref (.mod.EDTA.anno/.mod.out)
+                TEsorter:
+                  annotated protein sequences, used for dating and phylogenetic analysis (.liban.rexdb-plant.dom.faa)
+                  TE classification (.liban.rexdb-plant.cls.tsv)
+    
+### 6) TE dating & phylogenies
     Goal:       
     Software:   
     Scripts:    
     Input:      
     Output:     
-    
+
+### 7) 
+    Goal:       
+    Software:   
+    Scripts:    
+    Input:      
+    Output:     
+
+### 8) 
+    Goal:       
+    Software:   
+    Scripts:    
+    Input:      
+    Output:     
+
 ## Software used
 
 Overview over all kinds of bioinformatics software, including most of the above:

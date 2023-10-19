@@ -188,3 +188,39 @@
 4) (If you assembled different accessions: Do you see any differences between the accessions?)
 
     I did not.
+
+
+## 5 - TE annotation
+1) Visualize the genomic distribution of different TE superfamilies and clades in the longest scaffolds.
+
+    ![Alt text](TE_clades_1.png)
+    ![Alt text](TE_clades_2.png)
+
+2) Report the number of base pairs and the percent of the genome occupied by each superfamily and clade.
+    
+    From pilon_bt2_flye.fasta.mod.EDTA.TEanno.sum:
+
+    **Repeat Classes**\
+    Total Sequences: 375\
+    Total Length: 120'535'670 bp
+    Class            |  Count      |  bpMasked   |  %masked
+    ---              |  ---        |  ---        |  ---
+    **LTR**          |             |             |   
+    Copia            |  1140       |  1296011    |  1.08% 
+    Gypsy            |  5226       |  5563317    |  4.62% 
+    unknown          |  1343       |  828282     |  0.69% 
+    **TIR**          |             |             |   
+    CACTA            |  1212       |  835242     |  0.69% 
+    Mutator          |  1882       |  953181     |  0.79% 
+    PIF_Harbinger    |  539        |  236517     |  0.20% 
+    Tc1_Mariner      |  28         |  35059      |  0.03% 
+    hAT              |  844        |  342012     |  0.28% 
+    **nonTIR**       |             |             |   
+    helitron         |  10562      |  5934607    |  4.92% 
+    _________________|_____________|_____________|_______________
+    **total interspersed**   | 22776   |        16024228   |     13.29%   |
+    _________________|_____________|_____________|_______________
+    **Total**   | 22776   |        16024228   |     13.29%   |
+
+3) (Share the results and compare the clades abundance between Arabidopsis accessions.)
+4) (Report the number of intact and fragmented copies for each TE clade. What might this suggest about their dynamics?)
