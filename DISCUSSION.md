@@ -81,6 +81,8 @@
     ---|---|---|---|---|--- |
     Transcr. | 3064 | 876 | 2188 | 257 | 1275 |
 
+    ![Alt text](busco_trans.png)
+
     **Explanation**:
     The mRNAs are of course expected to be...
     - ... ***specific*** for the current expression
