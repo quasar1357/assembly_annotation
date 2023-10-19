@@ -66,7 +66,7 @@
     **flye** | | 4532 | **4543** | | 4488 | **4499** | | 44 | **44** | | 5 | **3** | | 59 | **50** |
     **canu** | | 4485 | **4542** | | 4435 | **4496** | | 50 | **46** | | 22 | **6** | | 89 | **48** |
 
-    ![Alt text](busco.png)
+    ![Alt text](busco_new.png)
 
     **Conclusions**:
     - They both look overall very similar and good quality
