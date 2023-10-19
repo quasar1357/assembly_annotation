@@ -9,20 +9,19 @@
 #SBATCH --time=05:00:00
 
 #SBATCH --job-name=TEsorter
-#SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/output_TEsorter_%j.o
-#SBATCH --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/error_TEsorter_%j.e
+#SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/5_2_2_TEsorter_%j.o
+#SBATCH --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/5_2_2_TEsorter_%j.e
 
 # Define working directory
-working_dir=/data/users/rschwob/01_assembly_annotation_course/results/5_annotate_TEs_SABRINA
+working_dir=/data/users/rschwob/01_assembly_annotation_course/results/5_annotate_TEs_2_sort_TEs
 
 COURSEDIR=/data/courses/assembly-annotation-course
 
 for tag in "Gypsy" "Copia"
 do
     tag_dir=${working_dir}/${tag}
-    input_file=${tag_dir}/${tag}.fa
-    mkdir ${tag_dir}
-    cd ${tag_dir}
+        input_file=${tag_dir}/${tag}.fa
+        cd ${tag_dir}
 
     singularity exec \
     --bind ${COURSEDIR} \

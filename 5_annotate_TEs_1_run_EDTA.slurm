@@ -9,21 +9,19 @@
 #SBATCH --time=05:00:00
 
 #SBATCH --job-name=edta
-#SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/output_edta_%j.o
-#SBATCH --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/error_edta_%j.e
+#SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/5_1_edta_%j.o
+#SBATCH --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/5_1_edta_%j.e
 
-# Define input (assembly), output paths
-# input_dir=/data/users/ivilela/assembly_annotation_course/bowtie
-# assembly=${input_dir}/pilonFlye.fasta
-# output_dir=/data/users/rschwob/01_assembly_annotation_course/results/5_annotate_TEs
-input_dir=/data/users/rschwob/01_assembly_annotation_course/results/3_polishing_2_pilon
-assembly=${input_dir}/pilon_bt2_flye.fasta
-output_dir=/data/users/rschwob/01_assembly_annotation_course/results/5_annotate_TEs_ROMAN
-mkdir ${output_dir}
-cd ${output_dir}
+# Define input (assembly) and output paths
+course_dir=/data/users/rschwob/01_assembly_annotation_course
+    input_dir=${course_dir}/results/3_polishing_2_pilon
+        assembly=${input_dir}/pilon_bt2_flye.fasta
+    output_dir=${course_dir}/results/5_annotate_TEs_1_EDTA
+    mkdir ${output_dir}
+    cd ${output_dir}
 
 COURSEDIR=/data/courses/assembly-annotation-course
-cds_file=${COURSEDIR}/CDS_annotation/TAIR10_cds_20110103_representative_gene_model_updated
+    cds_file=${COURSEDIR}/CDS_annotation/TAIR10_cds_20110103_representative_gene_model_updated
 
 singularity exec \
 --bind ${COURSEDIR} \
@@ -31,9 +29,21 @@ singularity exec \
 --bind ${input_dir} \
 ${COURSEDIR}/containers2/EDTA_v1.9.6.sif \
 EDTA.pl \
---genome ${assembly} \ # The genome FASTA
+--genome ${assembly} \
 --species others \
 --step all \
---cds ${cds_file} \ # The coding sequences FASTA
---anno 1 \ # perform whole-genome TE annotation after TE library construction
---threads 50 # Number of threads to run this script (default: 4)
+--cds ${cds_file} \
+--anno 1 \
+--threads 50
+
+# INPUTS:
+    # --genome: The genome FASTA
+    # --cds: The coding sequences FASTA
+    # --anno: Perform whole-genome TE annotation after TE library construction
+    # --threads: Number of threads to run this script (default: 4)
+
+
+
+# PATHS FOR IANIS' DATA:
+# input_dir=/data/users/ivilela/assembly_annotation_course/bowtie
+    # assembly=${input_dir}/pilonFlye.fasta
