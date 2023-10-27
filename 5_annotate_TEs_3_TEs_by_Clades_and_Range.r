@@ -1,12 +1,14 @@
 # load packages
 library(rtracklayer)
 
+setwd("D:/Documents/Beruf & Ausbildung/Ausbildung/22-08 MSC Bioinf/Genome Organization and Annotation/5_annotate_TEs_1_EDTA/evaluation")
+
 round_millions <- function(num){
   return(ceiling(num/1e+06)*1e+06)
 }
 
 # Load merged assembly GFF and convert it to a data frame
-gff_path <- './pilon_bt2_flye.fasta.mod.EDTA.TEanno.gff3'
+gff_path <- '../pilon_bt2_flye.fasta.mod.EDTA.TEanno.gff3'
 # Load GFF and convert it to a data frame
 gff <- rtracklayer::import(gff_path)
 gff_df <- as.data.frame(gff)

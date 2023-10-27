@@ -66,7 +66,7 @@
     **flye** | | 4532 | **4543** | | 4488 | **4499** | | 44 | **44** | | 5 | **3** | | 59 | **50** |
     **canu** | | 4485 | **4542** | | 4435 | **4496** | | 50 | **46** | | 22 | **6** | | 89 | **48** |
 
-    ![Alt text](busco_new.png)
+    ![Alt text](images/busco_new.png)
 
     **Conclusions**:
     - They both look overall very similar and good quality
@@ -81,7 +81,7 @@
     ---|---|---|---|---|--- |
     Transcr. | 3064 | 876 | 2188 | 257 | 1275 |
 
-    ![Alt text](busco_trans.png)
+    ![Alt text](images/busco_trans.png)
 
     **Explanation**:
     The mRNAs are of course expected to be...
@@ -117,7 +117,7 @@
     Total length (>= 10000 bp) | 119843676 | 119858316 | 122729360 | 122766579
     Total length (>= 50000 bp) | 118328916 | 118345850 | 118623136 | 118673382
 
-    ![Alt text](quast.png)
+    ![Alt text](images/quast.png)
 
     **Observations**:
     - General alignment statistics are similar
@@ -160,7 +160,7 @@
 
     The spectra all look very similar. Therefore, only "flye polished" is shown here:
 
-    ![Alt text](merqury_flye_pol.png)
+    ![Alt text](images/merqury_flye_pol.png)
 
     **Interpretation**:
     - 1 peak --> mostly homozygous (no heterozygous regions assembled seperately) --> good
@@ -184,16 +184,16 @@
     Yes and no. On first sight it looks kind of "messy", however one can see, that most dots do form a diagonal, or a diagonal could be formed if parts were shifted and/or reversed. Note that there are chromosomes that are split onto multiple contigs, but, importantly, (almost) no contigs that contain regions of multiple chromosomes. The latter would mean that there was probably a misassembly.
 
     **Flye vs. Reference**
-    ![Alt text](ref_flye.png)
+    ![Alt text](images/ref_flye.png)
     **Canu vs. Reference**
-    ![Alt text](ref_canu.png)
+    ![Alt text](images/ref_canu.png)
 
 3) How different are the two genome assemblies compared to each other?
 
     The direct comparison shows that they are actually very similar!
 
     **Flye vs. Canu**
-    ![Alt text](flye_canu.png)
+    ![Alt text](images/flye_canu.png)
 
 4) (If you assembled different accessions: Do you see any differences between the accessions?)
 
@@ -203,8 +203,8 @@
 ## 5 - TE annotation
 1) Visualize the genomic distribution of different TE superfamilies and clades in the longest scaffolds.
 
-    ![Alt text](TE_clades_1.png)
-    ![Alt text](TE_clades_2.png)
+    ![Alt text](images/TE_clades_1.png)
+    ![Alt text](images/TE_clades_2.png)
 
 2) Report the number of base pairs and the percent of the genome occupied by each superfamily and clade.
     

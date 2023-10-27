@@ -1,0 +1,17 @@
+
+THIS IS JUST A INFO/TEMP FILE FOR SAMPLING ALL INFOS WE NEED TO ADJUST IN MAKE_OPTS.CTL (IN CASE WE OVERWRITE IT OR THE LIKE)
+
+genome= <your genome assembly> #genome sequence (fasta file or fasta embeded in GFF3 file)
+
+est= <assembled transcriptome> #set of ESTs or assembled mRNA-seq in fasta format
+
+protein= /path/to/Atal_v10_CDS_proteins,/path/to/uniprotplant_reviewed.fasta #protein sequence file in fasta format (i.e. from mutiple organisms)
+
+rmlib= $genome.mod.EDTA.TElib.fa #provide an organism specific repeat library in fasta format for RepeatMasker
+
+repeat_protein= PTREP20 #provide a fasta file of transposable element proteins for RepeatRunner
+
+st2genome=1 #infer gene predictions directly from ESTs, 1 = yes, 0 = no
+protein2genome=1 #infer predictions from protein homology, 1 = yes, 0 = no
+cpus=16 #max number of cpus to use in BLAST and RepeatMasker
+TMP=$SCRATCH/data/users/rschwob/01_assembly_annotation_course/results/7_annot_prots/CDS_annotation/Atal_v10_CDS_proteins
