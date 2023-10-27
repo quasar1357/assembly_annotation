@@ -1,17 +1,22 @@
 
 THIS IS JUST A INFO/TEMP FILE FOR SAMPLING ALL INFOS WE NEED TO ADJUST IN MAKE_OPTS.CTL (IN CASE WE OVERWRITE IT OR THE LIKE)
 
-genome= <your genome assembly> #genome sequence (fasta file or fasta embeded in GFF3 file)
+genome= /data/users/rschwob/01_assembly_annotation_course/results/3_polishing_2_pilon/pilon_bt2_flye.fasta #genome assembly sequence (fasta file or fasta embeded in GFF3 file)
+    # genome= /data/users/srasch/assembly_course/07_TE_annotation/polished.fasta #genome sequence (fasta file or fasta embeded in GFF3 file)
 
-est= <assembled transcriptome> #set of ESTs or assembled mRNA-seq in fasta format
+est= /data/users/rschwob/01_assembly_annotation_course/results/2_assembly_3_trinity/Trinity.fasta #set of ESTs or assembled mRNA-seq in fasta format
+    # est= /data/users/srasch/assembly_course/07_TE_annotation/assembly.fasta #set of ESTs or assembled mRNA-seq in fasta format
 
-protein= /path/to/Atal_v10_CDS_proteins,/path/to/uniprotplant_reviewed.fasta #protein sequence file in fasta format (i.e. from mutiple organisms)
+protein= /data/courses/assembly-annotation-course/CDS_annotation/Atal_v10_CDS_proteins,/data/courses/assembly-annotation-course/CDS_annotation/uniprot-plant_reviewed.fasta #protein sequence file in fasta format (i.e. from mutiple organisms)
 
-rmlib= $genome.mod.EDTA.TElib.fa #provide an organism specific repeat library in fasta format for RepeatMasker
+rmlib= /data/users/rschwob/01_assembly_annotation_course/results/5_annotate_TEs_1_EDTA/pilon_bt2_flye.fasta.mod.EDTA.TElib.fa
+    #rmlib= /data/users/srasch/assembly_course/07_TE_annotation/polished.fasta.mod.EDTA.TElib.fa #provide an organism specific repeat library in fasta format for RepeatMasker
 
-repeat_protein= PTREP20 #provide a fasta file of transposable element proteins for RepeatRunner
+repeat_protein= /data/courses/assembly-annotation-course/CDS_annotation/PTREP20 #provide a fasta file of transposable element proteins for RepeatRunner
 
-st2genome=1 #infer gene predictions directly from ESTs, 1 = yes, 0 = no
+model_org= # skip the repeatmasker librearies and only use our EDTA lib and PTREP20 to mask the genome
+
+est2genome=1 #infer gene predictions directly from ESTs, 1 = yes, 0 = no
 protein2genome=1 #infer predictions from protein homology, 1 = yes, 0 = no
 cpus=16 #max number of cpus to use in BLAST and RepeatMasker
-TMP=$SCRATCH/data/users/rschwob/01_assembly_annotation_course/results/7_annot_prots/CDS_annotation/Atal_v10_CDS_proteins
+TMP=$SCRATCH #specify a directory other than the system default temporary directory for temporary files
