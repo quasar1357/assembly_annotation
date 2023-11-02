@@ -17,26 +17,31 @@ module load SequenceAnalysis/GenePrediction/maker/2.31.9;
 
 # Define output and input directories
 course_dir=/data/users/rschwob/01_assembly_annotation_course
-output_dir=${course_dir}/results/7_annot_prots_run_2
+output_dir=${course_dir}/results/7_annot_prots
     mkdir ${output_dir}
     cd ${output_dir}
 ctl=${course_dir}/scripts/7_annot_prots_maker_opts.ctl
 
-
-# 1) CREATE CONTROL FILES
-# maker -CTL
-
-
-# 2) Copy the prepared maker opts from script folder to output folder (overwriting the freshly created template)
-# cp ${ctl} ${output_dir}/maker_opts.ctl
-
-
-# 3) RUN MAKER
-
 COURSEDIR=/data/courses/assembly-annotation-course
 SOFTWAREDIR=/software
 
-ln -s /data/courses/assembly-annotation-course/CDS_annotation
+ln -s ${COURSEDIR}/CDS_annotation
+
+# 1) CREATE CONTROL FILES
+singularity exec \
+--bind ${SCRATCH} \
+--bind ${COURSEDIR} \
+--bind ${SOFTWAREDIR} \
+--bind ${course_dir} \
+${COURSEDIR}/containers2/MAKER_3.01.03.sif \
+maker -CTL
+
+
+# 2) Copy the prepared maker opts from script folder to output folder (overwriting the freshly created template)
+cp ${ctl} ${output_dir}/maker_opts.ctl
+
+
+# 3) RUN MAKER
 
 mpiexec -n 16 singularity exec \
 --bind ${SCRATCH} \
@@ -45,6 +50,10 @@ mpiexec -n 16 singularity exec \
 --bind ${course_dir} \
 ${COURSEDIR}/containers2/MAKER_3.01.03.sif \
 maker -mpi -base run_mpi maker_opts.ctl maker_bopts.ctl maker_exe.ctl
+
+
+
+
 
 
 # DELETED CODE/COMMENTS:

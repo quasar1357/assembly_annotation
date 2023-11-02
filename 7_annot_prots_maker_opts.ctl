@@ -1,5 +1,5 @@
 #-----Genome (these are always required)
-genome=/data/users/rschwob/01_assembly_annotation_course/results/3_polishing_2_pilon/pilon_bt2_flye.fasta #genome assembly sequence (fasta file or fasta embeded in GFF3 file)
+genome=/data/users/rschwob/01_assembly_annotation_course/results/3_polishing_2_pilon/pilon_bt2_flye.fasta #genome sequence (fasta file or fasta embeded in GFF3 file)
 organism_type=eukaryotic #eukaryotic or prokaryotic. Default is eukaryotic
 
 #-----Re-annotation Using MAKER Derived GFF3
@@ -19,8 +19,8 @@ est_gff= #aligned ESTs or mRNA-seq from an external GFF3 file
 altest_gff= #aligned ESTs from a closly relate species in GFF3 format
 
 #-----Protein Homology Evidence (for best results provide a file for at least one)
-protein=/data/courses/assembly-annotation-course/CDS_annotation/Atal_v10_CDS_proteins,/data/courses/assembly-annotation-course/CDS_annotation/uniprot-plant_reviewed.fasta #protein sequence file in fasta format (i.e. from mutiple oransisms)
-protein_gff= #aligned protein homology evidence from an external GFF3 file
+protein=/data/courses/assembly-annotation-course/CDS_annotation/Atal_v10_CDS_proteins,/data/courses/assembly-annotation-course/CDS_annotation/uniprot-plant_reviewed.fasta  #protein sequence file in fasta format (i.e. from mutiple organisms)
+protein_gff=  #aligned protein homology evidence from an external GFF3 file
 
 #-----Repeat Masking (leave values blank to skip repeat masking)
 model_org= # skip the repeatmasker libraries and only use our EDTA lib and PTREP20 to mask the genome
@@ -37,18 +37,21 @@ augustus_species= #Augustus gene prediction species model
 fgenesh_par_file= #FGENESH parameter file
 pred_gff= #ab-initio predictions from an external GFF3 file
 model_gff= #annotated gene models from an external GFF3 file (annotation pass-through)
+run_evm=0 #run EvidenceModeler, 1 = yes, 0 = no
 est2genome=1 #infer gene predictions directly from ESTs, 1 = yes, 0 = no
 protein2genome=1 #infer predictions from protein homology, 1 = yes, 0 = no
 trna=0 #find tRNAs with tRNAscan, 1 = yes, 0 = no
 snoscan_rrna= #rRNA file to have Snoscan find snoRNAs
+snoscan_meth= #-O-methylation site fileto have Snoscan find snoRNAs
 unmask=0 #also run ab-initio prediction programs on unmasked sequence, 1 = yes, 0 = no
+allow_overlap= #allowed gene overlap fraction (value from 0 to 1, blank for default)
 
 #-----Other Annotation Feature Types (features MAKER doesn't recognize)
 other_gff= #extra features to pass-through to final MAKER generated GFF3 file
 
 #-----External Application Behavior Options
 alt_peptide=C #amino acid used to replace non-standard amino acids in BLAST databases
-cpus=1 #max number of cpus to use in BLAST and RepeatMasker
+cpus=1 #max number of cpus to use in BLAST and RepeatMasker (not for MPI, leave 1 when using MPI)
 
 #-----MAKER Behavior Options
 max_dna_len=100000 #length for dividing up contigs into chunks (increases/decreases memory usage)
@@ -64,6 +67,7 @@ map_forward=0 #map names and attributes forward from old GFF3 genes, 1 = yes, 0 
 keep_preds=0 #Concordance threshold to add unsupported gene prediction (bound by 0 and 1)
 
 split_hit=10000 #length for the splitting of hits (expected max intron size for evidence alignments)
+min_intron=20 #minimum intron length (used for alignment polishing)
 single_exon=0 #consider single exon EST evidence when generating annotations, 1 = yes, 0 = no
 single_length=250 #min length required for single exon ESTs if 'single_exon is enabled'
 correct_est_fusion=0 #limits use of ESTs in annotation to avoid fusion genes
