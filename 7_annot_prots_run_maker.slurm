@@ -13,7 +13,8 @@
 #SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_maker_%j.o
 #SBATCH --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_maker_%j.e
 
-module load SequenceAnalysis/GenePrediction/maker/2.31.9;
+# Load the module
+module load SequenceAnalysis/GenePrediction/maker/2.31.9
 
 # Define output and input directories
 course_dir=/data/users/rschwob/01_assembly_annotation_course
@@ -27,7 +28,8 @@ SOFTWAREDIR=/software
 
 ln -s ${COURSEDIR}/CDS_annotation
 
-# 1) CREATE CONTROL FILES
+
+# 1) CREATE CONTROL FILES (templates)
 singularity exec \
 --bind ${SCRATCH} \
 --bind ${COURSEDIR} \
@@ -37,12 +39,11 @@ ${COURSEDIR}/containers2/MAKER_3.01.03.sif \
 maker -CTL
 
 
-# 2) Copy the prepared maker opts from script folder to output folder (overwriting the freshly created template)
+# 2) COPY THE PREPARED MAKER OPTIONS from script folder to output folder (overwriting the freshly created template)
 cp ${ctl} ${output_dir}/maker_opts.ctl
 
 
 # 3) RUN MAKER
-
 mpiexec -n 16 singularity exec \
 --bind ${SCRATCH} \
 --bind ${COURSEDIR} \
@@ -50,23 +51,3 @@ mpiexec -n 16 singularity exec \
 --bind ${course_dir} \
 ${COURSEDIR}/containers2/MAKER_3.01.03.sif \
 maker -mpi -base run_mpi maker_opts.ctl maker_bopts.ctl maker_exe.ctl
-
-
-
-
-
-
-# DELETED CODE/COMMENTS:
-
-# IMPORTANT: NOW GO EDIT maker_opts.ctl in the output folder, comment out step 1) and run step 3)
-
-# export SLURM_EXPORT_ENV=ALL
-# export LIBDIR=/software/SequenceAnalysis/Repeat/RepeatMasker/4.0.7/Libraries
-# export REPEATMASKER_DIR=/software/SequenceAnalysis/Repeat/RepeatMasker/4.0.7/RepeatMasker
-
-# --bind $SCRATCH:/TMP \
-# --bind ${COURSEDIR}:/${COURSEDIR} \
-# --bind ${SOFTWAREDIR}:/${SOFTWAREDIR} \
-# --bind ${course_dir}:${course_dir} \
-# ${COURSEDIR}/containers2/MAKER_3.01.03.sif \
-# maker -mpi --ignore_nfs_tmp -TMP /TMP maker_opts.ctl maker_bopts.ctl maker_exe.ctl
