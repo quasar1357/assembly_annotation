@@ -10,8 +10,8 @@
 #SBATCH --ntasks-per-node=16
 
 #SBATCH --job-name=maker
-#SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_maker_%j.o
-#SBATCH --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_maker_%j.e
+#SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_1_maker_%j.o
+#SBATCH --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_1_maker_%j.e
 
 # Load the module
 module load SequenceAnalysis/GenePrediction/maker/2.31.9
@@ -21,7 +21,7 @@ course_dir=/data/users/rschwob/01_assembly_annotation_course
 output_dir=${course_dir}/results/7_annot_prots
     mkdir ${output_dir}
     cd ${output_dir}
-ctl=${course_dir}/scripts/7_annot_prots_maker_opts.ctl
+ctl=${course_dir}/scripts/7_annot_prots_1_maker_opts.ctl
 
 COURSEDIR=/data/courses/assembly-annotation-course
 SOFTWAREDIR=/software
