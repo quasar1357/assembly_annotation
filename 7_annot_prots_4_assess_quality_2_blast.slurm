@@ -8,9 +8,9 @@
 #SBATCH --mem=32G
 #SBATCH --time=20:00:00
 
-#SBATCH --job-name=busco
-#SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_4_busco_%j.o
-#SBATCH --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_4_busco_%j.e
+#SBATCH --job-name=blast
+#SBATCH --output=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_4_blast_%j.o
+#SBATCH --error=/data/users/rschwob/01_assembly_annotation_course/slurm_out_files/7_4_blast_%j.e
 
 # Load blast
 module load Blast/ncbi-blast/2.10.1+
@@ -31,10 +31,10 @@ base=Ler_3_maker
 assembly=${maker_dir}/${base}.all.maker.proteins.fasta.renamed.fasta
 
 # Final blast output
-blast_out=${blast_dir}/${base}blastp.out
+blast_out=${blast_dir}/${base}_blastp.out
 
 
 # Create the blast protein data base
 makeblastdb -in ${uniprot_fasta} -out ${uniprot_db} -dbtype prot
 # Blast assembly against uniprot database (created in the step before)
-blastp -query ${assembly} -db ${uniprot_db} -num_threads 10 -outfmt 6 -evalue 1e-10 -out <blastp_output>
+blastp -query ${assembly} -db ${uniprot_db} -num_threads 10 -outfmt 6 -evalue 1e-10 -out ${blast_out}
