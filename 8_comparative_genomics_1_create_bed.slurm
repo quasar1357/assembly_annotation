@@ -44,11 +44,11 @@ if [[ -f ${gff_file_path} ]]; then
     # Output bed
     bed_dir=${out_dir}/bed
     mkdir ${bed_dir}
-    out_bed=${bed_dir}/${base}.all.maker.noseq.gff.renamed.bed
+    out_bed=${bed_dir}/${base}.bed
     # Output peptide
     peptide_dir=${out_dir}/peptide
     mkdir ${peptide_dir}
-    out_peptide=${peptide_dir}/${base}.all.maker.noseq.gff.renamed.fa
+    out_peptide=${peptide_dir}/${base}.fa
 
 
     # Filter the gff for the third field ($3) "type" == "contig"; sort them in reverse order (-r) based on the fifth field ($5) "width" numerically (-n)
