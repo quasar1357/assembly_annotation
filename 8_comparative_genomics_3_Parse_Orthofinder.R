@@ -23,6 +23,7 @@ ogroups <- fread(gene_count)
 
 # Define output dir for plots
 plot_dir <- paste0(wd, "/orthofinder_plots")
+dir.create(plot_dir)
 
 ### 1) Summarize Orthofinder statistics per species
 
