@@ -16,45 +16,60 @@ module add UHTS/Analysis/SeqKit/0.13.2
 
 # Define output and input directories
 course_dir=/data/users/rschwob/01_assembly_annotation_course
-maker_dir=${course_dir}/results/7_annot_prots/run_mpi.maker.output
+# maker_dir=${course_dir}/results/7_annot_prots/run_mpi.maker.output
+maker_dir=/data/courses/assembly-annotation-course/CDS_annotation/Genespace
 
-# Define the base name of the files (accession/dataset)
-base=Ler_3_maker
-# Input gff
-gff=${maker_dir}/${base}.all.maker.noseq.gff.renamed.gff
-# Input fasta
-fasta=${maker_dir}/${base}.all.maker.proteins.fasta.renamed.fasta
 # Output dir
 out_dir=${course_dir}/results/8_comparative_genomics
 mkdir ${out_dir}
-# Intermediate output files
-out_contigs=${out_dir}/${base}_longest_contigs.txt
-out_gene_IDs=${out_dir}/${base}_gene_IDs.txt
-# Output bed
-bed_dir=${out_dir}/bed
-mkdir ${bed_dir}
-out_bed=${bed_dir}/${base}.all.maker.noseq.gff.renamed.bed
-# Output peptide
-peptide_dir=${out_dir}/peptide
-mkdir ${peptide_dir}
-out_peptide=${peptide_dir}/${base}.all.maker.noseq.gff.renamed.fa
 
 
-# Filter the gff for the third field ($3) "type" == "contig"; sort them in reverse order (-r) based on the fifth field ($5) "width" numerically (-n)
-# cat ${gff} | awk '$3=="contig"' | sort -t $'\t' -k5 -n -r | head -n 10 > ${out_contigs}
-cat ${gff} | awk '$3=="contig"' | sort -t $'\t' -k5 -n -r | cut -f 1,4,5,9 | sed 's/ID=//' | sed 's/;.\+//' | head -n 10 > ${out_contigs}
+# Loop over all datasets (only consider files, not folders)
+for gff_file_path in ${maker_dir}/*noseq*renamed*gff; do
+if [[ -f ${gff_file_path} ]]; then
 
-# DETAILS:
-# -t $'\t': Specifies the field separator as a tab character (\t).
-# -k5: Sorts based on the fifth field ($5)
-# -n: sorts numerically (not alphabetically).
-# -r: Sorts the lines in reverse order.
+    # Define the base name of the files (accession/dataset)
+    gff_file=$(basename ${gff_file_path})
+    base=${gff_file%.all*}
+    # base=Ler_3_maker
+    # Input gff
+    gff=${gff_file_path}
+    # gff=${maker_dir}/${base}.all.maker.noseq*renamed.gff
+    # Input fasta
+    fasta=${maker_dir}/${base}*proteins*renamed*fasta
 
-#Create bed file
-cat ${gff} | awk '$3=="mRNA"' | cut -f 1,4,5,9 | sed 's/ID=//' | sed 's/;.\+//' | grep -w -f <(cut -f1 ${out_contigs}) > ${out_bed}
+    # Intermediate output files
+    out_contigs=${out_dir}/${base}_longest_contigs.txt
+    out_gene_IDs=${out_dir}/${base}_gene_IDs.txt
+    # Output bed
+    bed_dir=${out_dir}/bed
+    mkdir ${bed_dir}
+    out_bed=${bed_dir}/${base}.all.maker.noseq.gff.renamed.bed
+    # Output peptide
+    peptide_dir=${out_dir}/peptide
+    mkdir ${peptide_dir}
+    out_peptide=${peptide_dir}/${base}.all.maker.noseq.gff.renamed.fa
 
-#Get the gene IDs
-cut -f4 ${out_bed} > ${out_gene_IDs}
 
-#Create fasta file
-cat ${fasta} | seqkit grep -r -f ${out_gene_IDs} | seqkit seq -i > ${out_peptide}
+    # Filter the gff for the third field ($3) "type" == "contig"; sort them in reverse order (-r) based on the fifth field ($5) "width" numerically (-n)
+    # cat ${gff} | awk '$3=="contig"' | sort -t $'\t' -k5 -n -r | head -n 10 > ${out_contigs}
+    cat ${gff} | awk '$3=="contig"' | sort -t $'\t' -k5 -n -r | cut -f 1,4,5,9 | sed 's/ID=//' | sed 's/;.\+//' | head -n 10 > ${out_contigs}
+
+    # DETAILS:
+    # -t $'\t': Specifies the field separator as a tab character (\t).
+    # -k5: Sorts based on the fifth field ($5)
+    # -n: sorts numerically (not alphabetically).
+    # -r: Sorts the lines in reverse order.
+
+    #Create bed file
+    cat ${gff} | awk '$3=="mRNA"' | cut -f 1,4,5,9 | sed 's/ID=//' | sed 's/;.\+//' | grep -w -f <(cut -f1 ${out_contigs}) > ${out_bed}
+
+    #Get the gene IDs
+    cut -f4 ${out_bed} > ${out_gene_IDs}
+
+    #Create fasta file
+    cat ${fasta} | seqkit grep -r -f ${out_gene_IDs} | seqkit seq -i > ${out_peptide}
+
+
+fi
+done
