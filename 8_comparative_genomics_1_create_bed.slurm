@@ -16,16 +16,21 @@ module add UHTS/Analysis/SeqKit/0.13.2
 
 # Define output and input directories
 course_dir=/data/users/rschwob/01_assembly_annotation_course
-# maker_dir=${course_dir}/results/7_annot_prots/run_mpi.maker.output
-maker_dir=/data/courses/assembly-annotation-course/CDS_annotation/Genespace
 
-# Output dir
+# Input dir
+# input_dir=${course_dir}/results/7_annot_prots/run_mpi.maker.output
+input_dir=/data/courses/assembly-annotation-course/CDS_annotation/Genespace
+
+# Output dirs
 out_dir=${course_dir}/results/8_comparative_genomics
 mkdir ${out_dir}
-
+bed_dir=${out_dir}/bed
+mkdir ${bed_dir}
+peptide_dir=${out_dir}/peptide
+mkdir ${peptide_dir}
 
 # Loop over all datasets (only consider files, not folders)
-for gff_file_path in ${maker_dir}/*noseq*renamed*gff; do
+for gff_file_path in ${input_dir}/*noseq*renamed*gff; do
 if [[ -f ${gff_file_path} ]]; then
 
     # Define the base name of the files (accession/dataset)
@@ -34,22 +39,17 @@ if [[ -f ${gff_file_path} ]]; then
     # base=Ler_3_maker
     # Input gff
     gff=${gff_file_path}
-    # gff=${maker_dir}/${base}.all.maker.noseq*renamed.gff
+    # gff=${input_dir}/${base}.all.maker.noseq*renamed.gff
     # Input fasta
-    fasta=${maker_dir}/${base}*proteins*renamed*fasta
+    fasta=${input_dir}/${base}*proteins*renamed*fasta
 
     # Intermediate output files
     out_contigs=${out_dir}/${base}_longest_contigs.txt
     out_gene_IDs=${out_dir}/${base}_gene_IDs.txt
     # Output bed
-    bed_dir=${out_dir}/bed
-    mkdir ${bed_dir}
     out_bed=${bed_dir}/${base}.bed
     # Output peptide
-    peptide_dir=${out_dir}/peptide
-    mkdir ${peptide_dir}
     out_peptide=${peptide_dir}/${base}.fa
-
 
     # Filter the gff for the third field ($3) "type" == "contig"; sort them in reverse order (-r) based on the fifth field ($5) "width" numerically (-n)
     # cat ${gff} | awk '$3=="contig"' | sort -t $'\t' -k5 -n -r | head -n 10 > ${out_contigs}
@@ -62,7 +62,7 @@ if [[ -f ${gff_file_path} ]]; then
     # -r: Sorts the lines in reverse order.
 
     #Create bed file
-    cat ${gff} | awk '$3=="mRNA"' | cut -f 1,4,5,9 | sed 's/ID=//' | sed 's/;.\+//' | grep -w -f <(cut -f1 ${out_contigs}) > ${out_bed}
+    cat ${gff} | awk '$3=="mRNA"' | cut -f 1,4,5,9 | sed 's/ID=//' | sed 's/;.\+//' | grep -w -f < (cut -f1 ${out_contigs}) > ${out_bed}
 
     #Get the gene IDs
     cut -f4 ${out_bed} > ${out_gene_IDs}
@@ -70,6 +70,9 @@ if [[ -f ${gff_file_path} ]]; then
     #Create fasta file
     cat ${fasta} | seqkit grep -r -f ${out_gene_IDs} | seqkit seq -i > ${out_peptide}
 
-
 fi
 done
+
+# Copy the reference files to the directory for genespace
+cp ${course_dir}/references/TAIR10.bed ${bed_dir} 
+cp ${course_dir}/references/TAIR10.fa ${peptide_dir}
