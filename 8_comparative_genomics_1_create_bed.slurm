@@ -62,7 +62,7 @@ if [[ -f ${gff_file_path} ]]; then
     # -r: Sorts the lines in reverse order.
 
     #Create bed file
-    cat ${gff} | awk '$3=="mRNA"' | cut -f 1,4,5,9 | sed 's/ID=//' | sed 's/;.\+//' | grep -w -f < (cut -f1 ${out_contigs}) > ${out_bed}
+    cat ${gff} | awk '$3=="mRNA"' | cut -f 1,4,5,9 | sed 's/ID=//' | sed 's/;.\+//' | grep -w -f <(cut -f1 ${out_contigs}) > ${out_bed}
 
     #Get the gene IDs
     cut -f4 ${out_bed} > ${out_gene_IDs}
