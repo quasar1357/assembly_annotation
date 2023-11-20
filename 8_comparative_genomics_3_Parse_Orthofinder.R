@@ -57,7 +57,8 @@ p <- ggplot(o_percent, aes(x =  V1, y = perc, fill = species)) +
   ylim(c(0, 100)) +
   scale_fill_brewer(palette = "Paired") +
   theme_cowplot() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.margin = margin(t = 20, r = 20, b = 20, l = 60, unit = "pt")) +
   labs(y = "Count")
 ggsave(paste0(plot_dir, "/orthogroup_percentage_plot.pdf"))
 
@@ -80,7 +81,7 @@ ogroups_presence_absence <- ogroups_presence_absence %>%
   mutate(SUM = sum(c_across(ends_with("proteins"))))
 
 
-genomes <- names(ogroups_presence_absence)[grepl("proteins",names(ogroups_presence_absence))]
+genomes <- ids[-1] # names(ogroups_presence_absence)[grepl("proteins",names(ogroups_presence_absence))]
 ogroups_presence_absence <- data.frame(ogroups_presence_absence)
 ogroups_presence_absence[genomes] <- ogroups_presence_absence[genomes] == 1
 
@@ -88,6 +89,6 @@ ogroups_presence_absence[genomes] <- ogroups_presence_absence[genomes] == 1
 ## plot data using the ComplexUpset package
 library(ComplexUpset)
 
-pdf(paste0(plot_dir, "/one-to-one_orthogroups_plot.complexupset.pdf", height = 5, width = 10, useDingbats = FALSE))
-upset(ogroups_presence_absence, genomes, name = "genre", width_ratio = 0.1, wrap = TRUE, set_sizes = FALSE)
+pdf(paste0(plot_dir, "/one-to-one_orthogroups_plot.complexupset.pdf"), height = 7, width = 28, useDingbats = T) # 
+upset(ogroups_presence_absence, genomes, name = "genre", width_ratio = 0.1, wrap = T, set_sizes = F)
 dev.off()
