@@ -42,7 +42,7 @@ cut -f4 ${out_bed} > ${out_gene_IDs}
 
 # Count number of protein coding genes
 gene_count=$(cat ${out_bed} | wc -l)
-echo "protein coding genes in genome:" ${gene_count} >> ${counts}
+echo "protein-coding genes in genome:" ${gene_count} >> ${counts}
 
 # Get a list of only the best blast matches (number of entries = number of proteins found in uniprot)
 cat ${blast_in} | sort -t $'\t' -k1,1 -k11,11g > ${sorted_blast}
