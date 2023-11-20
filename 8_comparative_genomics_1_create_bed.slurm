@@ -55,7 +55,7 @@ if [[ -f ${gff_file_path} ]]; then
     # cat ${gff} | awk '$3=="contig"' | sort -t $'\t' -k5 -n -r | head -n 10 > ${out_contigs}
     cat ${gff} | awk '$3=="contig"' | sort -t $'\t' -k5 -n -r | cut -f 1,4,5,9 | sed 's/ID=//' | sed 's/;.\+//' | head -n 10 > ${out_contigs}
 
-    # DETAILS:
+    # DETAILS FOR SORT:
     # -t $'\t': Specifies the field separator as a tab character (\t).
     # -k5: Sorts based on the fifth field ($5)
     # -n: sorts numerically (not alphabetically).
@@ -76,3 +76,7 @@ done
 # Copy the reference files to the directory for genespace
 cp ${course_dir}/references/TAIR10.bed ${bed_dir} 
 cp ${course_dir}/references/TAIR10.fa ${peptide_dir}
+
+# ALTERNATIVELY: Just copy all bed and peptide files to the genespace directory (can also run directly in the terminal)
+# cp /data/courses/assembly-annotation-course/CDS_annotation/Genespace/*.bed ${bed_dir}
+# cp /data/courses/assembly-annotation-course/CDS_annotation/Genespace/*.fa ${peptide_dir}
