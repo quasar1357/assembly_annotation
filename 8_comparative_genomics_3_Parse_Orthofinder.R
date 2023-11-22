@@ -44,9 +44,20 @@ o_percent <- dat %>%
 
 ## Plot
 
+order_species <- c("TAIR10", "Sha", "Ler_3", "Cvi_0", "C24", "An_1")
+
+o_percent <- o_percent %>%
+  mutate(species = factor(species, levels = order_species))
+
+o_ratio <- o_ratio %>%
+  mutate(species = factor(species, levels = order_species))
+
+colors <- c("#CCCCCC", "#5A8DCB", "#FFA500", "#8FB355", "#D66066", "#9467BD")  # Adjusted colors
+
 p <- ggplot(o_ratio, aes(x =  V1, y = perc, fill = species)) +
   geom_col(position = "dodge") +
-  scale_fill_brewer(palette = "Paired") +
+  scale_fill_manual(values = setNames(colors, order_species)) +  # Set manual colors
+  # scale_fill_brewer(palette = "Paired") +
   theme_cowplot() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   labs(y = "Count")
@@ -55,7 +66,8 @@ ggsave(paste0(plot_dir, "/orthogroup_number_plot.pdf"))
 p <- ggplot(o_percent, aes(x =  V1, y = perc, fill = species)) +
   geom_col(position = "dodge") +
   ylim(c(0, 100)) +
-  scale_fill_brewer(palette = "Paired") +
+  scale_fill_manual(values = setNames(colors, order_species)) +  # Set manual colors
+  # scale_fill_brewer(palette = "Paired") +
   theme_cowplot() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         plot.margin = margin(t = 20, r = 20, b = 20, l = 60, unit = "pt")) +
