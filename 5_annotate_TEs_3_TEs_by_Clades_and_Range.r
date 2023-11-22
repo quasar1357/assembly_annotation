@@ -8,7 +8,7 @@ round_millions <- function(num){
 }
 
 # Load merged assembly GFF and convert it to a data frame
-gff_path <- '../pilon_bt2_flye.fasta.mod.EDTA.TEanno.gff3'
+gff_path <- '../output/pilon_bt2_flye.fasta.mod.EDTA.TEanno.gff3'
 # Load GFF and convert it to a data frame
 gff <- rtracklayer::import(gff_path)
 gff_df <- as.data.frame(gff)
