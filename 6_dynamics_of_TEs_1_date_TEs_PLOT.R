@@ -59,14 +59,14 @@ rep_table_stat <- setDT(rep_uncounted)[, list(Mean = mean(age), Max = max(age), 
 p1 <- ggplot(rep_table.m, aes(fill = Superfamily, x = age, weight = value / 1000000)) +
     geom_bar() +
     cowplot::theme_cowplot() +
-    geom_vline(
-        xintercept = 11.48, color = "red",
-        linetype = "dashed", size = 1
-    ) +
-    geom_vline(
-        xintercept = 32.42, color = "blue",
-        linetype = "dashed", size = 1
-    ) +
+    # geom_vline(
+    #     xintercept = 11.48, color = "red",
+    #     linetype = "dashed", size = 1
+    # ) +
+    # geom_vline(
+    #     xintercept = 32.42, color = "blue",
+    #     linetype = "dashed", size = 1
+    # ) +
     scale_fill_brewer(palette = "Paired") +
     xlab("TE age (Myr)") +
     ylab("Sequence (Mbp)") +
