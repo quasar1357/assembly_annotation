@@ -50,11 +50,13 @@
 (No discussion of this point. See evaluation in next step.)
 
 ## 3 - Assembly polishing and evaluation
+
 ### Polishing
 1) How much does the **polishing improve** your assemblies (run the assembly evaluations on the polished and non-polished assemblies)?
 
     Yes, especially canu profited. See below, notably fragmented and missing BUSCOs, as well as QUAST mismatches.
 
+<br>
 
 ### Quality - BUSCO (fly vs. canu, original vs. polished; all no_ref)
 1) How do your **genome assemblies** look according to your BUSCO results? Is one genome assembly better than the other?
@@ -91,6 +93,7 @@
     - ... expected to be present in ***variable numbers*** of copies each
     - ... possibly present in ***different forms*** (splice variants etc.)
 
+<br>
 
 ### Quality - QUAST (flye vs. canu, original vs. polished, no_ref vs. ref)
 1) How do your genome assemblies look according to your **QUAST results**? Is one genome assembly better than the other?
@@ -149,6 +152,8 @@
         - Largest alignment
         - Total aligned length
 
+<br>
+
 ### Quality - Merqury (fly vs. canu, original vs. polished; all no_ref)
 1) What are the **consensus quality QV** and **error rate** values of your assemblies?
 
@@ -203,6 +208,7 @@
 
 (*Optional: If you assembled different accessions: Do you see any differences between the accessions? --> I only assembled Ler accession.*)
 
+<br>
 
 # PART 2 - Organization & Annotation of Eukaryote Genomes
 
@@ -234,6 +240,7 @@
     _________________|_____________|_____________|_______________
     **Total**   | 22776   |        16024228   |     13.29%   |
 
+<br>
 
 - Share the results and **compare** the clades abundance (percent of the occupied genome) between *Arabidopsis* **accessions**.
 
@@ -245,7 +252,9 @@
     - Similar distribution in all accessions.
     - Copia and especially gypsy most abundant, as expected (note that for helitron, it is general consensus that the annotation is relatively unreliable.)
 
-- Visualize the genomic distribution of different TE superfamilies and clades in the longest scaffolds.
+<br>
+
+- Visualize the genomic **distribution** of different TE superfamilies and clades in the longest scaffolds.
 
     ![Alt text](images/TE_clades_1.png)
     ![Alt text](images/TE_clades_2.png)
@@ -254,8 +263,11 @@
     - Strikingly many TEs in the beginning of contig250. See the synteny map below for a possible explanation of this finding.
     - Most clades show this same pattern with copia having some more also dispersed across the rest of the contig.
 
+<br>
+
 - (*Optional: Report the number of intact and fragmented copies for each TE clade. What might this suggest about their dynamics?*)
 
+<br>
 
 ## 6) TE Dynamics
 
@@ -263,7 +275,7 @@
 
     ![Alt text](images/TE_dating.png)
 
-<br><br>
+<br>
 
 - **Phylogenetics**: Create two phylogenetic trees using the RT protein sequences of Gypsy and Copia elements, respectively.
 
@@ -322,6 +334,8 @@ GENESPACE integrates conserved gene order and orthology to define the expected p
     - **Visualize the co-occurrence of Orthogroups between Arabidopsis accessions.**
 
         ![Alt text](images/co-occurence.png)
+
+<br>
 
 - Visualize **Global Synteny**:
 
