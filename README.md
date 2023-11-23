@@ -105,6 +105,7 @@ This dataset is itself composed of three types of **raw data**:
                 5_annotate_TEs_2_sort_TEs_1_grep_copia_gypsy.slurm
                 5_annotate_TEs_2_sort_TEs_2_run_TEsorter.slurm
                 5_annotate_TEs_2_sort_TEs_3_run_TEsorter_on_db.slurm
+                5_annotate_TEs_3_TEs_by_Clades_and_Range.r
     Input:      fasta of best, polished assembly (i.e. flye --> pilon)
     Output:     EDTA:
                   fasta (.mod.EDTA.TElib.fa)
@@ -115,22 +116,25 @@ This dataset is itself composed of three types of **raw data**:
                 TEsorter:
                   annotated protein sequences, used for dating and phylogenetic analysis (.liban.rexdb-plant.dom.faa)
                   TE classification (.liban.rexdb-plant.cls.tsv)
+                R-script:
+                  arrangement of TEs of different families on the largest contig
     
-### 6) TE dating & phylogenies
+### 6) TE dynamics (dating an phylogenetics)
+    Goal:       Date TEs of different families
+                Assess phylogeny inside 2 most important superfamilies (copia and gypsy)
+    Software:   
+    Scripts:    
+    Input:      
+    Output:     
+
+### 7) Annotation of protein-coding sequences
     Goal:       
     Software:   
     Scripts:    
     Input:      
     Output:     
 
-### 7) 
-    Goal:       
-    Software:   
-    Scripts:    
-    Input:      
-    Output:     
-
-### 8) 
+### 8) Comparative Genomics
     Goal:       
     Software:   
     Scripts:    
