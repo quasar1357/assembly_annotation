@@ -72,7 +72,8 @@
     **Conclusions**:
     - They both look overall very similar and good quality
     - Both profited from polishing, but canu a bit more in that 16 of the 22 fragmented and 41 of the 89 missing BUSCOs could be fixed
-</p>
+
+<br>
 
 2) How does your **transcriptome assembly** look? Are there many duplicated genes? Can you explain the differences with the whole genome assemblies?
 
@@ -133,7 +134,8 @@
     - **Completeness**: **similar**
     - **Correctness**: better with **flye** (misassemblies; but hard to tell if not biological reasons!)
     - **If I have to choose one, I would choose flye**
-</p>
+
+<br>
 
 2) What additional information you get if you have a **reference** available?
 
@@ -197,9 +199,9 @@
     **Flye vs. Canu**
     ![Alt text](images/flye_canu.png)
 
-4) (If you assembled different accessions: Do you see any differences between the accessions?)
+<br>
 
-    I did not.
+(*Optional: If you assembled different accessions: Do you see any differences between the accessions? --> I only assembled Ler accession.*)
 
 
 # PART 2 - Organization & Annotation of Eukaryote Genomes
@@ -301,9 +303,9 @@
     Blast hits (homology to UniProt proteins):____ 19’781<br>
     **Percent of proteins with blast hits:_________ 71.00%**
 
-    UniProt: *“The Arabidopsis thaliana genome has a haploid chromosome number of 5, containing 135 Mb with **about 27,000 protein-coding genes** encoding around 35,000 proteins.”*
+    **UniProt**: *“The Arabidopsis thaliana genome has a haploid chromosome number of 5, containing 135 Mb with **about 27,000 protein-coding genes** encoding around 35,000 proteins.”*
 
-    - *The number of annotated protein-coding genes is very close to what is reported in the literature, which is generally a good sign. The 71% of proteins for which a homolog was found in UniProt is also a reasonable number, since blast is very stringent. In addition, some difference is also expected to be due to actual biological reasons.*
+    **Conclusion:** The number of annotated protein-coding genes is very close to what is reported in the literature, which is generally a good sign. The 71% of proteins for which a homolog was found in UniProt is also a reasonable number, since blast is very stringent. In addition, some difference is also expected to be due to actual biological reasons.
 
 
 
@@ -327,9 +329,8 @@ GENESPACE integrates conserved gene order and orthology to define the expected p
 
     - **Dotplots:** For just a pair of genomes. With reference genome: How could we use it to improve the contiguity of your genome assembly?
         
-        **Answer**:
-        - *Look for anomalies in the dot plots that might indicate misassemblies or errors in the assembly. Could include breaks in synteny, unexpected inversions, or regions with irregular patterns.*
-        - *Refine Assembly: correcting misassemblies, resolving repeat regions, or filling gaps.*
+        - Look for anomalies in the dot plots that might indicate misassemblies or errors in the assembly. Could include breaks in synteny, unexpected inversions, or regions with irregular patterns.
+        - Refine Assembly: correcting misassemblies, resolving repeat regions, or filling gaps.
 
         ![Alt text](images/dotplot_ref.png)
 
@@ -344,9 +345,9 @@ GENESPACE integrates conserved gene order and orthology to define the expected p
         - Interestingly, contig250, which showed a lot of TEs at its beginning (see step 5), maps to the second half of chromosome 5, which could indicate that the region with the many TEs is around the centromere, which is also usually hard to assemble, which in turn would explain why the contigs stayed seperated.
 
 
-    - Species tree:
+    - **Species tree**:
         
         ![Alt text](images/species_tree.png)
 
         **Conclusions**:
-        - Reflects what we see in the synteny map, notably that Ler (dataset 3) is closest to Sha and the TAIR10 reference.
+        - The tree reflects what we see in the synteny map, notably that Ler (dataset 3) is closest to Sha and the TAIR10 reference.
