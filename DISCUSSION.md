@@ -266,11 +266,13 @@ suggest about their dynamics?)
 - **Annotation Quality**: Run BUSCO to asses quality. Compare results with...
     
     - ... the BUSCO analysis previously run against the genome
+
+        ![Alt text](images/BUSCO_annotation.png)
+    
     - ... the BUSCO analyses of other Arabidopsis accessions.
 
-    ![Alt text](images/BUSCO_annotation.png)
+        ![Alt text](images/BUSCO_anno_comparison.png)
 
-    ![Alt text](images/BUSCO_anno_comparison.png)
 
 - **BLAST**: Sequence homology to functionally validated proteins (UniProt database):
     - How many of the annotated proteins have homology to known ones?

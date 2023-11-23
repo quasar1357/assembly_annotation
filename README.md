@@ -8,7 +8,7 @@ Roman Schwob (roman.schwob@students.unibe.ch)
 
 This project is part of the courses "Genome assembly" (473637) and "Organization and annotation of Eukaryote genomes" (SBL.30004) of the University of Bern and Fribourg, taking place in Fall Semester 2023/2024.
 
-This readme gives a rough overview over the steps performed. For a in-detail discussion of the results, please refer to the [discussion file](./DISCUSSION.md).
+This readme gives an overview over the steps performed, the tools used as well as their input and output. For a in-detail discussion of the results, please refer to the [discussion file](./DISCUSSION.md).
 
 The general idea of the project is to perform an entire assembly and annotation based on whole genome NGS data of *Arabidopsis thaliana*.
 
@@ -98,7 +98,8 @@ This dataset is itself composed of three types of **raw data**:
     Output:     mummerplots (regions on assemblies/ref. plotted against each other)
 
 ### 5) Annotation of Transposable Elements (TEs)
-    Goal:       Produce a filtered non-redundant TE library for annotation of structurally intact and fragmented elements
+    Goal:       EDTA: Produce a filtered non-redundant TE library for annotation of structurally intact and fragmented elements
+                TEsorter: clade-level classification of Class I TEs (or retrotransposons, RTs)
     Software:   EDTA_v1.9.6
                 TEsorter_1.3.0
     Scripts:    5_annotate_TEs_1_run_EDTA.slurm
@@ -106,40 +107,71 @@ This dataset is itself composed of three types of **raw data**:
                 5_annotate_TEs_2_sort_TEs_2_run_TEsorter.slurm
                 5_annotate_TEs_2_sort_TEs_3_run_TEsorter_on_db.slurm
                 5_annotate_TEs_3_TEs_by_Clades_and_Range.r
-    Input:      fasta of best, polished assembly (i.e. flye --> pilon)
+    Input:      fasta of best polished assembly (i.e. flye --> pilon)
     Output:     EDTA:
-                  fasta (.mod.EDTA.TElib.fa)
-                  gff (.mod.EDTA.TEanno.gff3)
-                  summary (.mod.EDTA.TEanno.sum)
-                  gff of intact only (.mod.EDTA.intact.gff3)
-                  comparison to ref (.mod.EDTA.anno/.mod.out)
+                  Summary of whole-genome TE annotation (.mod.EDTA.TEanno.sum)                  
+                  Repeat Masker comparison to ref (.mod.out, in sub-folder .mod.EDTA.TEanno)
+                  gff with whole-genome TE annotation (.mod.EDTA.TEanno.gff3)
+                  gff with annotation of intact only (.mod.EDTA.intact.gff3)                  
+                  fasta with non-redundant TE library, classification into superfamilies (.mod.EDTA.TElib.fa)
                 TEsorter:
-                  annotated protein sequences, used for dating and phylogenetic analysis (.liban.rexdb-plant.dom.faa)
-                  TE classification (.liban.rexdb-plant.cls.tsv)
+                  Annotated protein sequences, used for dating and phylogenetic analysis (.dom.faa)
+                  TE classification (.cls.tsv)
                 R-script:
-                  arrangement of TEs of different families on the largest contig
+                  Plot with arrangement of TEs of different families on the largest contig
     
 ### 6) TE dynamics (dating an phylogenetics)
     Goal:       Date TEs of different families
                 Assess phylogeny inside 2 most important superfamilies (copia and gypsy)
-    Software:   
-    Scripts:    
-    Input:      
-    Output:     
+    Software:   date: perl (6_dynamics_of_TEs_1_date_TEs_ParseML.pl, parse script, Aurelie Kapusta)
+                phylo: clustal omega 1.2.4 (alignment); FastTree 2.1.10 (tree creation); iTOL (visualization; itol.embl.de)
+    Scripts:    6_dynamics_of_TEs_1_date_TEs_1_run_ParseML.slurm
+                6_dynamics_of_TEs_1_date_TEs_2_plot_dates.R
+    Input:      Date: Repeat Masker outputs from EDTA (.mod.out)
+                Phylo: annotated protein sequences (.dom.faa) and classificication (.cls.tsv) from TEsorter
+    Output:     Tables and plot of TEs with dates
+                Phylogenetic trees of copia and gypsy superfamilies
 
 ### 7) Annotation of protein-coding sequences
-    Goal:       
-    Software:   
-    Scripts:    
-    Input:      
-    Output:     
+    Goal:       Homology-based genome annotation (protein-coding genes)
+                Quality assessment and evaluation of annotation
+    Software:   MAKER pipeline 2.31.9
+                busco 4.1.4 (assessment of quality/completeness)
+                blast 2.10.1 (assessment of homology to known proteins in UniProt)
+    Scripts:    7_annot_prots_1_maker_opts.ctl (maker config file)
+                7_annot_prots_1_run_maker.slurm
+                7_annot_prots_2_create_gff_fasta.slurm (merge results into 1 gff and fasta file each)
+                7_annot_prots_3_rename_genes.slurm (build shorter IDs)
+                7_annot_prots_4_assess_quality_1_run_busco.slurm
+                7_annot_prots_4_assess_quality_2_blast.slurm
+                7_annot_prots_4_assess_quality_3_analysis.slurm
+                7_annot_prots_4_assess_quality_4_compare_busco_changes.ipynb
+    Input:      Genome assembly fasta file (pilon_bt2_flye.fasta)
+                RNAseq assembly fasta file (Trinity.fasta)
+                Repeat (TE) library in fasta format (.mod.EDTA.TElib.fa)
+    References: fasta file with known protein sequences
+                fasta file of transposable element proteins
+    Output:     gff file of all annotated proteins (renamed with shorter IDs)
+                fasta file of all annotated proteins (renamed with shorter IDs)
+                fasta file of all annotated transcripts (renamed with shorter IDs)
+                Evaluation of quality of annotation (busco and blast statistics)
+                Comparison of quality of annotation to that of other groups
 
 ### 8) Comparative Genomics
-    Goal:       
-    Software:   
-    Scripts:    
-    Input:      
-    Output:     
+    Goal:       Compare annotation of Ler accession with others (notably orthogroups and synteny; 10 longest contigs)
+    Software:   genespace_1.1.4
+                (SeqKit 0.13.2)
+    Scripts:    8_comparative_genomics_1_create_bed.slurm
+                8_comparative_genomics_2_run_genespace.slurm
+                8_comparative_genomics_3_Parse_Orthofinder.R
+    Input:      gff file of annotated proteins, renamed and merged, for each accession and the reference genome
+                (OR bed file containing protein-coding genes of the longest contigs, made from annotation gff)
+                fasta file of annotated proteins, renamed and merged, for each accession and the reference genome
+                (OR fasta file containing peptide sequence of the longest contigs, made from annotation fasta)
+    Output:     Table and plots with statistics about orthogroup sizes and proportion of genes assigned (Statistics_PerSpecies.tsv)
+                Table and plot of co-occurrence of Orthogroups (Orthogroups.GeneCount.tsv)
+                Dotplots of pairwise synteny
+                Synteny map (riparian) with overview of contig arrangements accross accessions and reference genome
 
 ## Software used
 

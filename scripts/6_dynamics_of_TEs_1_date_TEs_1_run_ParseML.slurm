@@ -37,4 +37,4 @@ sed_out=${sed_in}.sed
 sed '1d;3d' ${sed_in} > ${sed_out}
 
 
-# ==> Use R-script (localli) to create plot
+# ==> Use R-script (locally) to create plot
