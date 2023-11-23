@@ -1,4 +1,4 @@
-# Genome assembly of *A. thaliana* - questions of interest
+# PART 1 - Genome assembly of *A. thaliana* - questions of interest
 
 
 ## 1 - Read quality and statistics
@@ -66,7 +66,7 @@
     **flye** | | 4532 | **4543** | | 4488 | **4499** | | 44 | **44** | | 5 | **3** | | 59 | **50** |
     **canu** | | 4485 | **4542** | | 4435 | **4496** | | 50 | **46** | | 22 | **6** | | 89 | **48** |
 
-    ![Alt text](images/busco_new.png)
+    ![Alt text](busco_new.png)
 
     **Conclusions**:
     - They both look overall very similar and good quality
@@ -81,7 +81,7 @@
     ---|---|---|---|---|--- |
     Transcr. | 3064 | 876 | 2188 | 257 | 1275 |
 
-    ![Alt text](images/busco_trans.png)
+    ![Alt text](busco_trans.png)
 
     **Explanation**:
     The mRNAs are of course expected to be...
@@ -117,7 +117,7 @@
     Total length (>= 10000 bp) | 119843676 | 119858316 | 122729360 | 122766579
     Total length (>= 50000 bp) | 118328916 | 118345850 | 118623136 | 118673382
 
-    ![Alt text](images/quast.png)
+    ![Alt text](quast.png)
 
     **Observations**:
     - General alignment statistics are similar
@@ -160,7 +160,7 @@
 
     The spectra all look very similar. Therefore, only "flye polished" is shown here:
 
-    ![Alt text](images/merqury_flye_pol.png)
+    ![Alt text](merqury_flye_pol.png)
 
     **Interpretation**:
     - 1 peak --> mostly homozygous (no heterozygous regions assembled seperately) --> good
@@ -184,30 +184,31 @@
     Yes and no. On first sight it looks kind of "messy", however one can see, that most dots do form a diagonal, or a diagonal could be formed if parts were shifted and/or reversed. Note that there are chromosomes that are split onto multiple contigs, but, importantly, (almost) no contigs that contain regions of multiple chromosomes. The latter would mean that there was probably a misassembly.
 
     **Flye vs. Reference**
-    ![Alt text](images/ref_flye.png)
+    ![Alt text](ref_flye.png)
     **Canu vs. Reference**
-    ![Alt text](images/ref_canu.png)
+    ![Alt text](ref_canu.png)
 
 3) How different are the two genome assemblies compared to each other?
 
     The direct comparison shows that they are actually very similar!
 
     **Flye vs. Canu**
-    ![Alt text](images/flye_canu.png)
+    ![Alt text](flye_canu.png)
 
 4) (If you assembled different accessions: Do you see any differences between the accessions?)
 
     I did not.
 
 
-## 5 - TE annotation
-1) Visualize the genomic distribution of different TE superfamilies and clades in the longest scaffolds.
+# PART 2 - organization and annotation of Eucaryote genomes
 
-    ![Alt text](images/TE_clades_1.png)
-    ![Alt text](images/TE_clades_2.png)
 
-2) Report the number of base pairs and the percent of the genome occupied by each superfamily and clade.
-    
+# Organization & Annotation of Eukaryotic Genomes
+
+## 5) TE Annotation
+
+- **TE superfamilies**: Report  number of base pairs and  percent of the genome occupied by each superfamily and clade.
+
     From pilon_bt2_flye.fasta.mod.EDTA.TEanno.sum:
 
     **Repeat Classes**\
@@ -232,5 +233,77 @@
     _________________|_____________|_____________|_______________
     **Total**   | 22776   |        16024228   |     13.29%   |
 
-3) (Share the results and compare the clades abundance between Arabidopsis accessions.)
-4) (Report the number of intact and fragmented copies for each TE clade. What might this suggest about their dynamics?)
+
+- Share the results and **compare** the clades abundance (percent of the occupied genome) between *Arabidopsis* **accessions**.
+
+    See $.liban.rexdb-plant.cls.tsv for the classification of TE families into clades and $genome.mod.EDTA.TEanno.sum for their abundance. Visualize and compare the difference between accessions with a bar plot.
+
+    ![Alt text](TE_comparison.png)
+
+*Optional*:
+
+- Visualize the genomic distribution of different TE superfamilies and clades in the longest scaffolds.
+
+    ![Alt text](TE_clades_1.png)
+    ![Alt text](TE_clades_2.png)
+
+- (Report the number of intact and fragmented copies for each TE clade. What might this
+suggest about their dynamics?)
+
+
+## 6) TE Dynamics
+
+- **Dating**: Date the divergence and generate a landscape graph for TE superfamilies.
+
+    ![Alt text](TE_dating.png)
+
+- **Phylogenetics**: Create two phylogenetic trees using the RT protein sequences of Gypsy and Copia elements, respectively.
+
+    ![Alt text](TE_phylo_copia.png)
+    ![Alt text](TE_phylo_gypsy.png)
+
+## 7) Annotation of protein-coding sequences
+
+- **Annotation Quality**: Run BUSCO to asses quality. Compare results with...
+    
+    - ... the BUSCO analysis previously run against the genome
+    - ... the BUSCO analyses of other Arabidopsis accessions.
+
+    ![Alt text](BUSCO_annotation.png)
+
+    ![Alt text](BUSCO_anno_comparison.png)
+
+- **BLAST**: Sequence homology to functionally validated proteins (UniProt database):
+    - How many of the annotated proteins have homology to known ones?
+    - What can be concluded from this quality check?
+
+    Annotated protein-coding genes in genome:_ 27’845<br>
+    Blast hits (homology to UniProt proteins):____ 19’781<br>
+    **Percent of proteins with blast hits:_________ 71.00%**
+
+    UniProt: *“The Arabidopsis thaliana genome has a haploid chromosome number of 5, containing 135 Mb with **about 27,000 protein-coding genes** encoding around 35,000 proteins.”*
+
+
+
+## 8) Comparative Genomics
+
+GENESPACE integrates conserved gene order and orthology to define the expected physical position of all genes across multiple genomes.
+
+- Visualize **Summary Statistics**:
+
+    - **Visualize the percentage of genes in orthogroups.** This is particularly useful for quality check, since one would usually expect a large percentage of genes in orthogroups, unless there is a very distant species in OrthoFinder’s input proteome data.
+
+    - **Visualize the cooccurrence of Orthogroups between Arabidopsis accessions.**
+
+- Visualize **Global Synteny**:
+
+    Dotplots and syntenic maps are a useful tool for assessing and improving the quality of nonreference genome asemblies, and also for visualizing structural rearrangements between species (deletions, duplications, insertions, translocations, inversions) and within species.
+
+    - **Dotplots:** For just a pair of genomes. With reference genome: How could we use it to improve the contiguity of your genome assembly?
+        - *Look for anomalies in the dot plots that might indicate misassemblies or errors in the assembly. Could include breaks in synteny, unexpected inversions, or regions with irregular patterns.*
+        - *Refine Assembly: correcting misassemblies, resolving repeat regions, or filling gaps.*
+
+
+    - **Synteny Maps/Riparian Plot:** visualize syntenic relationships among >2 species. Are there any major structural rearrangements between accessions?
+        - *Some major translocations (Chr 5) and inversions (Chr 1)*
+
