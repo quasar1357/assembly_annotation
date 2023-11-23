@@ -180,6 +180,7 @@
     **QV & error rate**: both **very good** (remember QV of 40 ~99.99%), canu even (slightly) better here!
     **Completeness**: ~equal, **high** level
 
+<br>
 
 ## 4 - Comparing Genomes
 
