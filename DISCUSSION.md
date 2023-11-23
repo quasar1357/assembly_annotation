@@ -239,12 +239,20 @@
 
     ![Alt text](images/TE_comparison.png)
 
+    *- Similar distribution in all accessions.*
+
+    *- Copia and especially gypsy most abundant, as expected (note that for helitron, it is general consensus that the annotation is relatively unreliable.)*
+
 *Optional*:
 
 - Visualize the genomic distribution of different TE superfamilies and clades in the longest scaffolds.
 
     ![Alt text](images/TE_clades_1.png)
     ![Alt text](images/TE_clades_2.png)
+
+    *- Strikingly many TEs in the beginning of contig250.*
+
+    *- Most clades showing this same pattern with maybe copia having some more also dispersed across the rest of the contig.*
 
 - (Report the number of intact and fragmented copies for each TE clade. What might this
 suggest about their dynamics?)
@@ -268,10 +276,16 @@ suggest about their dynamics?)
     - ... the BUSCO analysis previously run against the genome
 
         ![Alt text](images/BUSCO_annotation.png)
+
+        *- The assembly quality is good at almost 99% (> 95% is generally considered good).*
+
+        *- Loosing 10% complete BUSCOs and ending around 90% after the annotation, is well in the expected range. This value could be further improved by including additional steps in the maker annotation pipeline (noatably, ab initio tools).*
     
     - ... the BUSCO analyses of other Arabidopsis accessions.
 
         ![Alt text](images/BUSCO_anno_comparison.png)
+
+        - *Good numbers also when compared to other groups.*
 
 
 - **BLAST**: Sequence homology to functionally validated proteins (UniProt database):
@@ -284,6 +298,8 @@ suggest about their dynamics?)
 
     UniProt: *“The Arabidopsis thaliana genome has a haploid chromosome number of 5, containing 135 Mb with **about 27,000 protein-coding genes** encoding around 35,000 proteins.”*
 
+    - *The number of annotated protein-coding genes is very close to what is reported in the literature, which is generally a good sign. The 71% of proteins for which a homolog was found in UniProt is also a reasonable number, since blast is very stringent. In addition, some difference is also expected to be due to actual biological reasons.*
+
 
 
 ## 8) Comparative Genomics
@@ -294,7 +310,11 @@ GENESPACE integrates conserved gene order and orthology to define the expected p
 
     - **Visualize the percentage of genes in orthogroups.** This is particularly useful for quality check, since one would usually expect a large percentage of genes in orthogroups, unless there is a very distant species in OrthoFinder’s input proteome data.
 
-    - **Visualize the cooccurrence of Orthogroups between Arabidopsis accessions.**
+        ![Alt text](images/orthogroups.png)
+
+    - **Visualize the co-occurrence of Orthogroups between Arabidopsis accessions.**
+
+        ![Alt text](images/co-occurence.png)
 
 - Visualize **Global Synteny**:
 
@@ -304,7 +324,18 @@ GENESPACE integrates conserved gene order and orthology to define the expected p
         - *Look for anomalies in the dot plots that might indicate misassemblies or errors in the assembly. Could include breaks in synteny, unexpected inversions, or regions with irregular patterns.*
         - *Refine Assembly: correcting misassemblies, resolving repeat regions, or filling gaps.*
 
+        ![Alt text](images/dotplot_ref.png)
+
 
     - **Synteny Maps/Riparian Plot:** visualize syntenic relationships among >2 species. Are there any major structural rearrangements between accessions?
-        - *Some major translocations (Chr 5) and inversions (Chr 1)*
+        - *Overall the structure looks ensuringly similar to reference*
+        - *Just some major translocations (Chr 5) and inversions (Chr 1), which could be due to biological reasons or due to the assembly/annotation*
+        - *Interestingly, contig250, which showed a lot of TEs at its beginning (see step 5), maps to the second half of chromosome 5, which could indicate that the region with the many TEs is around the centromere, which is also usually hard to assemble, which in turn would explain why the contigs stayed seperated.*
+    
+        ![Alt text](images/synteny_map.png)
 
+    - Species tree:
+        
+        - *Reflects what we see in the synteny map, notably that Ler (dataset 3) is closest to Sha and the TAIR10 reference.*
+
+        ![Alt text](images/species_tree.png)
