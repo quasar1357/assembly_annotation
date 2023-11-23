@@ -200,10 +200,7 @@
     I did not.
 
 
-# PART 2 - organization and annotation of Eucaryote genomes
-
-
-# Organization & Annotation of Eukaryotic Genomes
+# PART 2 - Organization & Annotation of Eukaryote Genomes
 
 ## 5) TE Annotation
 
