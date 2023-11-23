@@ -8,7 +8,7 @@ Roman Schwob (roman.schwob@students.unibe.ch)
 
 This project is part of the courses "Genome assembly" (473637) and "Organization and annotation of Eukaryote genomes" (SBL.30004) of the University of Bern and Fribourg, taking place in Fall Semester 2023/2024.
 
-This readme gives an overview over the steps performed, the tools used as well as their input and output. For a in-detail discussion of the results, please refer to the [discussion file](./DISCUSSION.md).
+In this readme you find an overview over the steps performed, the tools used as well as their input and output. For an in-detail discussion of the results, please refer to the [discussion file](./DISCUSSION.md).
 
 The general idea of the project is to perform an entire assembly and annotation based on whole genome NGS data of *Arabidopsis thaliana*.
 
@@ -33,9 +33,9 @@ Jiao WB, Schneeberger K. Chromosome-level assemblies of multiple Arabidopsis gen
 
 This dataset is itself composed of three types of **raw data**:
 
-1) Whole genome Illumina (Illumina)
-2) Whole genome PacBio (pacbio)
-3) Whole transcriptome Illumina RNA-seq (RNAseq)
+1) Whole genome Illumina short reads (Illumina)
+2) Whole genome PacBio long reads (pacbio)
+3) Whole transcriptome Illumina RNA-seq short reads (RNAseq)
 
 ## Data analysis steps
 
@@ -62,16 +62,16 @@ This dataset is itself composed of three types of **raw data**:
     Input:      Raw reads fastq files
     Output:     Fasta file (per assembly)
 
-### 3) Polishing of Pacbio assemblies using precise Illumina reads
-    Goal:       Improve draft assemblies by genome polishing using Illumina reads
+### 3) Polishing of Pacbio assemblies using Illumina reads
+    Goal:       Improve draft assemblies by genome polishing using Illumina reads (short but precise)
                 Evaluate quality of assemblies (before and after polishing)
     Software:   bowtie 2.3.4.1 (align Illumina reads to assemblies)
                 samtools 1.10 (convert SAM to BAM, sort and index)
                 pilon 1.22 (polish assemblies using Illumina short reads)
-                busco 4.1.4 (evaluate quality of assemblies)
-                quast 4.6.0 (evaluate quality of assemblies)
+                busco 4.1.4 (evaluate and compare quality of assemblies)
+                quast 4.6.0 (evaluate and compare completeness of assemblies, based on universal orthologs)
                 canu 2.1.1 (create meryl db)
-                merqury 1.3.1 (evaluate quality of assemblies)
+                merqury 1.3.1 (evaluate quality of assemblies, reference free)
     Scripts:    3_polishing_1_align_illumina_1_create_bowtie_index.slurm
                 3_polishing_1_align_illumina_2_align.slurm
                 3_polishing_1_align_illumina_3_SAM_to_BAM.slurm
@@ -85,7 +85,7 @@ This dataset is itself composed of three types of **raw data**:
                 Reference genome (for quast)
     Output:     Alignment of Illumina reads onto Pacbio assemblies (BAM files, sorted and indexed)
                 Polished assemblies
-                Evaluation of quality of assemblies (busco, quast and merqury)
+                Evaluation of quality of assemblies (busco and quast statistics, merqury kmer spectra)
 
 ### 4) Comparing Genomes
     Goal:       Compare genomes to reference (evaluate synteny)
@@ -95,11 +95,11 @@ This dataset is itself composed of three types of **raw data**:
                 4_compare_genomes_2_run_mummerplot.slurm
     Input:      Assemblies (fasta files)
                 Reference genome
-    Output:     mummerplots (regions on assemblies/ref. plotted against each other)
+    Output:     mummerplots/dotplots (regions on assemblies/ref. plotted against each other)
 
 ### 5) Annotation of Transposable Elements (TEs)
     Goal:       EDTA: Produce a filtered non-redundant TE library for annotation of structurally intact and fragmented elements
-                TEsorter: clade-level classification of Class I TEs (or retrotransposons, RTs)
+                TEsorter: Make clade-level classification of Class I TEs (or retrotransposons, RTs)
     Software:   EDTA_v1.9.6
                 TEsorter_1.3.0
     Scripts:    5_annotate_TEs_1_run_EDTA.slurm
@@ -122,11 +122,16 @@ This dataset is itself composed of three types of **raw data**:
     
 ### 6) TE dynamics (dating an phylogenetics)
     Goal:       Date TEs of different families
-                Assess phylogeny inside 2 most important superfamilies (copia and gypsy)
-    Software:   date: perl (6_dynamics_of_TEs_1_date_TEs_ParseML.pl, parse script, Aurelie Kapusta)
-                phylo: clustal omega 1.2.4 (alignment); FastTree 2.1.10 (tree creation); iTOL (visualization; itol.embl.de)
+                Assess phylogeny inside 2 most important TE superfamilies (copia and gypsy)
+    Software:   Date:
+                  perl (6_dynamics_of_TEs_1_date_TEs_ParseML.pl, parse script, Aurelie Kapusta)
+                Phylo:
+                  clustal omega 1.2.4 (alignment)
+                  FastTree 2.1.10 (tree creation)
+                  iTOL (visualization; itol.embl.de)
     Scripts:    6_dynamics_of_TEs_1_date_TEs_1_run_ParseML.slurm
                 6_dynamics_of_TEs_1_date_TEs_2_plot_dates.R
+                6_dynamics_of_TEs_2_phylogenetics.slurm
     Input:      Date: Repeat Masker outputs from EDTA (.mod.out)
                 Phylo: annotated protein sequences (.dom.faa) and classificication (.cls.tsv) from TEsorter
     Output:     Tables and plot of TEs with dates
@@ -144,7 +149,7 @@ This dataset is itself composed of three types of **raw data**:
                 7_annot_prots_3_rename_genes.slurm (build shorter IDs)
                 7_annot_prots_4_assess_quality_1_run_busco.slurm
                 7_annot_prots_4_assess_quality_2_blast.slurm
-                7_annot_prots_4_assess_quality_3_analysis.slurm
+                7_annot_prots_4_assess_quality_3_analysis.slurm (evaluate annotation and blast numbers)
                 7_annot_prots_4_assess_quality_4_compare_busco_changes.ipynb
     Input:      Genome assembly fasta file (pilon_bt2_flye.fasta)
                 RNAseq assembly fasta file (Trinity.fasta)
@@ -155,7 +160,7 @@ This dataset is itself composed of three types of **raw data**:
                 fasta file of all annotated proteins (renamed with shorter IDs)
                 fasta file of all annotated transcripts (renamed with shorter IDs)
                 Evaluation of quality of annotation (busco and blast statistics)
-                Comparison of quality of annotation to that of other groups
+                Comparison of quality of annotation (busco) to that of other groups
 
 ### 8) Comparative Genomics
     Goal:       Compare annotation of Ler accession with others (notably orthogroups and synteny; 10 longest contigs)
