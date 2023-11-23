@@ -215,7 +215,9 @@
 
 ## 5) Annotation of Transposable Elements (TEs)
 
-- **TE superfamilies**: Report  number of base pairs and  percent of the genome occupied by each superfamily and clade.
+### TE superfamilies
+
+- Report  number of base pairs and  percent of the genome occupied by each superfamily and clade.
 
     From pilon_bt2_flye.fasta.mod.EDTA.TEanno.sum:
 
@@ -272,97 +274,106 @@
 
 ## 6) TE Dynamics
 
-- **Dating**: Date the divergence and generate a landscape graph for TE superfamilies.
+### Dating
 
-    ![Alt text](images/TE_dating.png)
+Date the divergence and generate a landscape graph for TE superfamilies.
+
+![Alt text](images/TE_dating.png)
 
 <br>
 
-- **Phylogenetics**: Create two phylogenetic trees using the RT protein sequences of Gypsy and Copia elements, respectively.
+### Phylogenetics
 
-    ![Alt text](images/TE_phylo_copia.png)
-    ![Alt text](images/TE_phylo_gypsy.png)
+Create two phylogenetic trees using the RT protein sequences of Gypsy and Copia elements, respectively.
 
-    *Note that the trees are (probably) not properly rooted, which could be done using an outgroup, but was not considered necessary in this context.*
+![Alt text](images/TE_phylo_copia.png)
+![Alt text](images/TE_phylo_gypsy.png)
+
+*Note that the trees are (probably) not properly rooted, which could be done using an outgroup, but was not considered necessary in this context.*
+
+<br>
 
 ## 7) Annotation of protein-coding sequences
 
-- **Annotation Quality**: Run BUSCO to asses quality. Compare results with...<br><br>
+### Annotation Quality - Busco
 
-    ... the BUSCO analysis previously run against the genome
+Run BUSCO to asses quality. Compare results with...<br>
 
-    ![Alt text](images/BUSCO_annotation.png)
+... the BUSCO analysis previously run **against the genome**
 
-    **Conclusions**:
-    - The assembly quality is good at almost 99% (> 95% is generally considered good).
-    - Loosing 10% complete BUSCOs and ending around 90% after the annotation, is well in the expected range. This value could be further improved by including additional steps in the maker annotation pipeline (noatably, ab initio tools).
-    
-    <br>
+![Alt text](images/BUSCO_annotation.png)
 
-    ... the BUSCO analyses of other Arabidopsis accessions.
-
-    ![Alt text](images/BUSCO_anno_comparison.png)
-
-    **Conclusions**:
-    - Good numbers also when compared to other groups.
+**Conclusions**:
+- The assembly quality is good at almost 99% (> 95% is generally considered good).
+- Loosing 10% complete BUSCOs and ending around 90% after the annotation, is well in the expected range. This value could be further improved by including additional steps in the maker annotation pipeline (noatably, ab initio tools).
 
 <br>
 
-- **BLAST**: Sequence homology to functionally validated proteins (UniProt database):
-    - How many of the annotated proteins have homology to known ones?
-    - What can be concluded from this quality check?
+... the BUSCO analyses of other Arabidopsis **accessions**
 
-    Annotated protein-coding genes in genome:_ 27’845<br>
-    Blast hits (homology to UniProt proteins):____ 19’781<br>
-    **Percent of proteins with blast hits:_________ 71.00%**
+![Alt text](images/BUSCO_anno_comparison.png)
 
-    **UniProt**: *“The Arabidopsis thaliana genome has a haploid chromosome number of 5, containing 135 Mb with **about 27,000 protein-coding genes** encoding around 35,000 proteins.”*
+**Conclusions**:
+- Good numbers also when compared to other groups.
 
-    **Conclusion:** The number of annotated protein-coding genes is very close to what is reported in the literature, which is generally a good sign. The 71% of proteins for which a homolog was found in UniProt is also a reasonable number, since blast is very stringent. In addition, some difference is also expected to be due to actual biological reasons.
+<br>
 
+### Annotation Quality - BLAST
+Sequence homology to functionally validated proteins (UniProt database):
+- How many of the annotated proteins have homology to known ones?
+- What can be concluded from this quality check?
 
+Annotated protein-coding genes in genome:_ 27’845<br>
+Blast hits (homology to UniProt proteins):____ 19’781<br>
+**Percent of proteins with blast hits:_________ 71.00%**
+
+**UniProt**: *“The Arabidopsis thaliana genome has a haploid chromosome number of 5, containing 135 Mb with **about 27,000 protein-coding genes** encoding around 35,000 proteins.”*
+
+**Conclusion:** The number of annotated protein-coding genes is very close to what is reported in the literature, which is generally a good sign. The 71% of proteins for which a homolog was found in UniProt is also a reasonable number, since blast is very stringent. In addition, some difference is also expected to be due to actual biological reasons.
+
+<br>
 
 ## 8) Comparative Genomics
 
 GENESPACE integrates conserved gene order and orthology to define the expected physical position of all genes across multiple genomes.
 
-- Visualize **Summary Statistics**:
+### Summary Statistics
 
-    - **Visualize the percentage of genes in orthogroups.** This is particularly useful for quality check, since one would usually expect a large percentage of genes in orthogroups, unless there is a very distant species in OrthoFinder’s input proteome data.
+- **Visualize the percentage of genes in orthogroups.** This is particularly useful for quality check, since one would usually expect a large percentage of genes in orthogroups, unless there is a very distant species in OrthoFinder’s input proteome data.
 
-        ![Alt text](images/orthogroups.png)
+    ![Alt text](images/orthogroups.png)
 
-    - **Visualize the co-occurrence of Orthogroups between Arabidopsis accessions.**
+- **Visualize the co-occurrence of Orthogroups between Arabidopsis accessions.**
 
-        ![Alt text](images/co-occurence.png)
+    ![Alt text](images/co-occurence.png)
 
 <br>
 
-- Visualize **Global Synteny**:
+### Global Synteny
 
-    Dotplots and syntenic maps are a useful tool for assessing and improving the quality of nonreference genome asemblies, and also for visualizing structural rearrangements between species (deletions, duplications, insertions, translocations, inversions) and within species.
+Dotplots and syntenic maps are a useful tool for assessing and improving the quality of nonreference genome asemblies, and also for visualizing structural rearrangements between species (deletions, duplications, insertions, translocations, inversions) and within species.
 
-    - **Dotplots:** For just a pair of genomes. With reference genome: How could we use it to improve the contiguity of your genome assembly?
-        
-        - Look for anomalies in the dot plots that might indicate misassemblies or errors in the assembly. Could include breaks in synteny, unexpected inversions, or regions with irregular patterns.
-        - Refine Assembly: correcting misassemblies, resolving repeat regions, or filling gaps.
+- **Dotplots:** For just a pair of genomes. With reference genome: How could we use it to improve the contiguity of your genome assembly?
+    
+    - Look for anomalies in the dot plots that might indicate misassemblies or errors in the assembly. Could include breaks in synteny, unexpected inversions, or regions with irregular patterns.
+    - Refine Assembly: correcting misassemblies, resolving repeat regions, or filling gaps.
 
-        ![Alt text](images/dotplot_ref.png)
-
-
-    - **Synteny Maps/Riparian Plot:** visualize syntenic relationships among >2 species. Are there any major structural rearrangements between accessions?
-        
-        ![Alt text](images/synteny_map.png)
-
-        **Observations & Conclusions**:
-        - Overall the structure looks ensuringly similar to reference.
-        - Just some major translocations (Chr 5) and inversions (Chr 1), which could be due to biological reasons or due to the assembly/annotation.
-        - Interestingly, contig250, which showed a lot of TEs at its beginning (see step 5), maps to the second half of chromosome 5, which could indicate that the region with the many TEs is around the centromere, which is also usually hard to assemble, which in turn would explain why the contigs stayed seperated.
+    ![Alt text](images/dotplot_ref.png)
 
 
-    - **Species tree**:
-        
-        ![Alt text](images/species_tree.png)
+- **Synteny Maps/Riparian Plot:** visualize syntenic relationships among >2 species. Are there any major structural rearrangements between accessions?
 
-        **Conclusions**:
-        - The tree reflects what we see in the synteny map, notably that Ler (dataset 3) is closest to Sha and the TAIR10 reference.
+    ![Alt text](images/synteny_map.png)
+
+    **Observations & Conclusions**:
+    - Overall the structure looks ensuringly similar to reference.
+    - Just some major translocations (Chr 5) and inversions (Chr 1), which could be due to biological reasons or due to the assembly/annotation.
+    - Interestingly, contig250, which showed a lot of TEs at its beginning (see step 5), maps to the second half of chromosome 5, which could indicate that the region with the many TEs is around the centromere, which is also usually hard to assemble, which in turn would explain why the contigs stayed seperated.
+
+
+- **Species tree**:
+    
+    ![Alt text](images/species_tree.png)
+
+    **Conclusions**:
+    - The tree reflects what we see in the synteny map, notably that Ler (dataset 3) is closest to Sha and the TAIR10 reference.
