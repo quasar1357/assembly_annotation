@@ -56,7 +56,7 @@
     Yes, especially canu profited. See below, notably fragmented and missing BUSCOs, as well as QUAST mismatches.
 
 
-### BUSCO (fly vs. canu, original vs. polished; all no_ref)
+### Quality - BUSCO (fly vs. canu, original vs. polished; all no_ref)
 1) How do your **genome assemblies** look according to your BUSCO results? Is one genome assembly better than the other?
 
     n = 4596 (for all analyses) BUSCOS:\
@@ -91,7 +91,7 @@
     - ... possibly present in ***different forms*** (splice variants etc.)
 
 
-### QUAST (flye vs. canu, original vs. polished, no_ref vs. ref)
+### Quality - QUAST (flye vs. canu, original vs. polished, no_ref vs. ref)
 1) How do your genome assemblies look according to your **QUAST results**? Is one genome assembly better than the other?
 
     _| flye_original | flye_polished | canu_original | canu_polished
@@ -147,7 +147,7 @@
         - Largest alignment
         - Total aligned length
 
-### Merqury (fly vs. canu, original vs. polished; all no_ref)
+### Quality - Merqury (fly vs. canu, original vs. polished; all no_ref)
 1) What are the **consensus quality QV** and **error rate** values of your assemblies?
 
 2) What is the estimated **completeness** of your assemblies?
@@ -239,23 +239,20 @@
 
     ![Alt text](images/TE_comparison.png)
 
-    *- Similar distribution in all accessions.*
-
-    *- Copia and especially gypsy most abundant, as expected (note that for helitron, it is general consensus that the annotation is relatively unreliable.)*
-
-*Optional*:
+    **Observations**:
+    - Similar distribution in all accessions.
+    - Copia and especially gypsy most abundant, as expected (note that for helitron, it is general consensus that the annotation is relatively unreliable.)
 
 - Visualize the genomic distribution of different TE superfamilies and clades in the longest scaffolds.
 
     ![Alt text](images/TE_clades_1.png)
     ![Alt text](images/TE_clades_2.png)
 
-    *- Strikingly many TEs in the beginning of contig250.*
+    **Observations**:
+    - Strikingly many TEs in the beginning of contig250. See the synteny map below for a possible explanation of this finding.
+    - Most clades show this same pattern with copia having some more also dispersed across the rest of the contig.
 
-    *- Most clades showing this same pattern with maybe copia having some more also dispersed across the rest of the contig.*
-
-- (Report the number of intact and fragmented copies for each TE clade. What might this
-suggest about their dynamics?)
+- (*Optional: Report the number of intact and fragmented copies for each TE clade. What might this suggest about their dynamics?*)
 
 
 ## 6) TE Dynamics
@@ -264,29 +261,37 @@ suggest about their dynamics?)
 
     ![Alt text](images/TE_dating.png)
 
+<br><br>
+
 - **Phylogenetics**: Create two phylogenetic trees using the RT protein sequences of Gypsy and Copia elements, respectively.
 
     ![Alt text](images/TE_phylo_copia.png)
     ![Alt text](images/TE_phylo_gypsy.png)
 
+    *Note that the trees are (probably) not properly rooted, which could be done using an outgroup, but was not considered necessary in this context.*
+
 ## 7) Annotation of protein-coding sequences
 
-- **Annotation Quality**: Run BUSCO to asses quality. Compare results with...
+- **Annotation Quality**: Run BUSCO to asses quality. Compare results with...<br><br>
+
+    ... the BUSCO analysis previously run against the genome
+
+    ![Alt text](images/BUSCO_annotation.png)
+
+    **Conclusions**:
+    - The assembly quality is good at almost 99% (> 95% is generally considered good).
+    - Loosing 10% complete BUSCOs and ending around 90% after the annotation, is well in the expected range. This value could be further improved by including additional steps in the maker annotation pipeline (noatably, ab initio tools).
     
-    - ... the BUSCO analysis previously run against the genome
+    <br>
 
-        ![Alt text](images/BUSCO_annotation.png)
+    ... the BUSCO analyses of other Arabidopsis accessions.
 
-        *- The assembly quality is good at almost 99% (> 95% is generally considered good).*
+    ![Alt text](images/BUSCO_anno_comparison.png)
 
-        *- Loosing 10% complete BUSCOs and ending around 90% after the annotation, is well in the expected range. This value could be further improved by including additional steps in the maker annotation pipeline (noatably, ab initio tools).*
-    
-    - ... the BUSCO analyses of other Arabidopsis accessions.
+    **Conclusions**:
+    - Good numbers also when compared to other groups.
 
-        ![Alt text](images/BUSCO_anno_comparison.png)
-
-        - *Good numbers also when compared to other groups.*
-
+<br>
 
 - **BLAST**: Sequence homology to functionally validated proteins (UniProt database):
     - How many of the annotated proteins have homology to known ones?
@@ -321,6 +326,8 @@ GENESPACE integrates conserved gene order and orthology to define the expected p
     Dotplots and syntenic maps are a useful tool for assessing and improving the quality of nonreference genome asemblies, and also for visualizing structural rearrangements between species (deletions, duplications, insertions, translocations, inversions) and within species.
 
     - **Dotplots:** For just a pair of genomes. With reference genome: How could we use it to improve the contiguity of your genome assembly?
+        
+        **Answer**:
         - *Look for anomalies in the dot plots that might indicate misassemblies or errors in the assembly. Could include breaks in synteny, unexpected inversions, or regions with irregular patterns.*
         - *Refine Assembly: correcting misassemblies, resolving repeat regions, or filling gaps.*
 
@@ -328,14 +335,18 @@ GENESPACE integrates conserved gene order and orthology to define the expected p
 
 
     - **Synteny Maps/Riparian Plot:** visualize syntenic relationships among >2 species. Are there any major structural rearrangements between accessions?
-        - *Overall the structure looks ensuringly similar to reference*
-        - *Just some major translocations (Chr 5) and inversions (Chr 1), which could be due to biological reasons or due to the assembly/annotation*
-        - *Interestingly, contig250, which showed a lot of TEs at its beginning (see step 5), maps to the second half of chromosome 5, which could indicate that the region with the many TEs is around the centromere, which is also usually hard to assemble, which in turn would explain why the contigs stayed seperated.*
-    
+        
         ![Alt text](images/synteny_map.png)
+
+        **Observations & Conclusions**:
+        - Overall the structure looks ensuringly similar to reference.
+        - Just some major translocations (Chr 5) and inversions (Chr 1), which could be due to biological reasons or due to the assembly/annotation.
+        - Interestingly, contig250, which showed a lot of TEs at its beginning (see step 5), maps to the second half of chromosome 5, which could indicate that the region with the many TEs is around the centromere, which is also usually hard to assemble, which in turn would explain why the contigs stayed seperated.
+
 
     - Species tree:
         
-        - *Reflects what we see in the synteny map, notably that Ler (dataset 3) is closest to Sha and the TAIR10 reference.*
-
         ![Alt text](images/species_tree.png)
+
+        **Conclusions**:
+        - Reflects what we see in the synteny map, notably that Ler (dataset 3) is closest to Sha and the TAIR10 reference.
