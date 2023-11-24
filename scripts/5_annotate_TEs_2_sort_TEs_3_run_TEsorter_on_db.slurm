@@ -22,6 +22,7 @@ COURSEDIR=/data/courses/assembly-annotation-course
     input_dir=${COURSEDIR}/CDS_annotation/
         input_file=${input_dir}/Brassicaceae_repbase_all_march2019.fasta
 
+# Run TEsorter (singularity container)
 singularity exec \
 --bind ${output_dir} \
 --bind ${COURSEDIR} \

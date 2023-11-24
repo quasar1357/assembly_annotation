@@ -3,8 +3,8 @@ library(tidyverse)
 library(data.table)
 library(cowplot)
 library(RColorBrewer)
-
 library(UpSetR)
+
 
 
 ### Import datasets
@@ -25,8 +25,9 @@ ogroups <- fread(gene_count)
 plot_dir <- paste0(wd, "/orthofinder_plots")
 dir.create(plot_dir)
 
-### 1) Summarize Orthofinder statistics per species
 
+
+### 1) Summarize Orthofinder statistics per species
 
 ## Parse Dataset 
 o_ratio <- dat %>%

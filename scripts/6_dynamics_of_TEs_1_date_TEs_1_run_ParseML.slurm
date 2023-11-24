@@ -25,13 +25,13 @@ output_dir=${course_dir}/results/6_dynamics_of_TEs_1_dating
     mkdir ${output_dir}
     cd ${output_dir}
 
-# 1) split the amount of DNA by bins of % divergence (or My) for each repeat name, family or class
+# 1) Split the amount of DNA by bins of % divergence (or My) for each repeat name, family or class
 parse_script=/data/users/rschwob/01_assembly_annotation_course/scripts/6_dynamics_of_TEs_1_date_TEs_ParseML.pl
 perl ${parse_script} -i ${in_file} -l 50,1 -v
-# move output files to output folder (is by default created in input folder)
+# Move output files to output folder (is by default created in input folder)
 mv ${in_dir}/*landscape* ${output_dir}
 
-# 2) removing the first and the 3rd line
+# 2) Remove the first and the 3rd line
 sed_in=${genome}.mod.out.landscape.Div.Rname.tab
 sed_out=${sed_in}.sed
 sed '1d;3d' ${sed_in} > ${sed_out}

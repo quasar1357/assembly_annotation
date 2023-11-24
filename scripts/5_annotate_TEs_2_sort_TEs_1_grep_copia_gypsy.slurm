@@ -19,16 +19,13 @@ course_dir=/data/users/rschwob/01_assembly_annotation_course
     output_dir=${course_dir}/results/5_annotate_TEs_2_sort_TEs
     mkdir ${output_dir}
 
+# Loop over Gypsy and Copia
 for tag in "Gypsy" "Copia"
 do
+    # Define and create output directory for each tag/superfamily
     tag_dir=${output_dir}/${tag}
     mkdir ${tag_dir}
         output_file=${tag_dir}/${tag}.fa
-
+    # grep sequences from the fasta input using the tag/superfamily, remove the "--" lines
     grep -A1 ${tag} ${input_file} | grep -v -- "^--$" > ${output_file}
 done
-
-
-# PATHS FOR SABRINA'S DATA:
-# input_dir=/data/users/srasch/assembly_course/05_annotation/TE_annotator
-# input_file=${input_dir}/polished.fasta.mod.EDTA.TElib.fa

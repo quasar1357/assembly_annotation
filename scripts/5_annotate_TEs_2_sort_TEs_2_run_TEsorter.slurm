@@ -15,14 +15,17 @@
 # Define working directory
 working_dir=/data/users/rschwob/01_assembly_annotation_course/results/5_annotate_TEs_2_sort_TEs
 
+# Define directory with the container
 COURSEDIR=/data/courses/assembly-annotation-course
 
+# Loop over Gypsy and Copia
 for tag in "Gypsy" "Copia"
 do
     tag_dir=${working_dir}/${tag}
         input_file=${tag_dir}/${tag}.fa
         cd ${tag_dir}
 
+    # Run TEsorter (singularity container)
     singularity exec \
     --bind ${COURSEDIR} \
     --bind ${tag_dir} \

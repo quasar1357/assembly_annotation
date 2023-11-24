@@ -23,6 +23,7 @@ course_dir=/data/users/rschwob/01_assembly_annotation_course
 COURSEDIR=/data/courses/assembly-annotation-course
     cds_file=${COURSEDIR}/CDS_annotation/TAIR10_cds_20110103_representative_gene_model_updated
 
+#  Run EDTA (singularity container)
 singularity exec \
 --bind ${COURSEDIR} \
 --bind ${output_dir} \
@@ -41,9 +42,3 @@ EDTA.pl \
     # --cds: The coding sequences FASTA
     # --anno: Perform whole-genome TE annotation after TE library construction
     # --threads: Number of threads to run this script (default: 4)
-
-
-
-# PATHS FOR IANIS' DATA:
-# input_dir=/data/users/ivilela/assembly_annotation_course/bowtie
-    # assembly=${input_dir}/pilonFlye.fasta
