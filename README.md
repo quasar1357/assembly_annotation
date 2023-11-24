@@ -33,8 +33,8 @@ Jiao WB, Schneeberger K. Chromosome-level assemblies of multiple Arabidopsis gen
 
 This dataset is itself composed of three types of **raw data**:
 
-1) Whole genome Illumina short reads (Illumina)
-2) Whole genome PacBio long reads (pacbio)
+1) Whole genome Illumina short reads with high precision (Illumina)
+2) Whole genome PacBio long reads with lower precision (pacbio)
 3) Whole transcriptome Illumina RNA-seq short reads (RNAseq)
 
 ## Data analysis steps
@@ -181,6 +181,6 @@ This dataset is itself composed of three types of **raw data**:
 ## Software used
 
 Overview over all kinds of bioinformatics software, including most of the above:
-https://bioinformaticshome.com/
+https://bioinformaticshome.com/ \
 Overview over software available on the ibu cluster:
 https://www.vital-it.ch/
