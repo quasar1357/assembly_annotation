@@ -8,19 +8,19 @@
 1) What are the **read lengths** of the different datasets?
 
     **Illumina**: **101** [#Seq: 43'225'638]\
+    **Pacbio** overall: total 7'441'829'487, avg. **6'599** [#Seq: 1'127'777] \
     ___Pacbio ERR3415825:  total 3'340'800'486, avg. 6'078 (50-46'330) [#Seq: 549'679] \
     ___Pacbio ERR3415826: total 4'101'029'001, avg. 7'094 (50-43'512) [#Seq: 578'098] \
-    **Pacbio** overall: total 7'441'829'487, avg. **6'599** [#Seq: 1'127'777] \
     **RNAseq**: **101** [#Seq: 18'094'147]
 
 2) What kind of **coverage** do you expect from the Pacbio and the Illumina WGS reads? (hint: lookup the expected genome size of Arabidopsis thaliana)
 
-    cov = bp_seq / bp_tot = (#reads * read_length) / bp_tot \
+    cov = bp_seq / bp_tot = (#reads * read_length) / bp_tot
 
     **Illumina**: cov = (43'225'638 * 101) / 130'000'000 = **33.6** \
+    **Pacbio** mean: cov = **28.6** \
     ___Pacbio ERR3415825: cov = 3'340'800'486 / 130'000'000 = 25.7 \
     ___Pacbio ERR3415826: cov = 4'101'029'001 / 130'000'000 = 32.5 \
-    **Pacbio** mean: cov = **28.6** \
     (RNAseq: complex to estimate, since not whole genome is translated!)
 
 3) Do all datasets have information on **base quality**?

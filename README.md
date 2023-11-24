@@ -8,7 +8,7 @@ Roman Schwob (roman.schwob@students.unibe.ch)
 
 This project is part of the courses "Genome assembly" (473637) and "Organization and annotation of Eukaryote genomes" (SBL.30004) of the University of Bern and Fribourg, taking place in Fall Semester 2023/2024.
 
-In this readme you find an overview over the steps performed, the tools used as well as their input and output. For an in-detail discussion of the results, please refer to the [discussion file](./DISCUSSION.md).
+In this readme you find an overview over the steps performed, the tools used as well as their input and output. For an overview and evaluation of the main results, please refer to the [discussion](./DISCUSSION.md).
 
 The general idea of the project is to perform an entire assembly and annotation based on whole genome NGS data of *Arabidopsis thaliana*.
 
