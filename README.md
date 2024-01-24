@@ -65,7 +65,7 @@ This dataset is itself composed of three types of **raw data**:
 ### 3) Polishing of Pacbio assemblies using Illumina reads
     Goal:       Improve draft assemblies by genome polishing using Illumina reads (short but precise)
                 Evaluate quality of assemblies (before and after polishing)
-    Software:   bowtie 2.3.4.1 (align Illumina reads to assemblies)
+    Software:   bowtie2 2.3.4.1 (align Illumina reads to assemblies)
                 samtools 1.10 (convert SAM to BAM, sort and index)
                 pilon 1.22 (polish assemblies using Illumina short reads)
                 busco 4.1.4 (evaluate and compare quality of assemblies)
