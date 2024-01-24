@@ -68,10 +68,10 @@ This dataset is itself composed of three types of **raw data**:
     Software:   bowtie2 2.3.4.1 (align Illumina reads to assemblies)
                 samtools 1.10 (convert SAM to BAM, sort and index)
                 pilon 1.22 (polish assemblies using Illumina short reads)
-                busco 4.1.4 (evaluate and compare quality of assemblies)
-                quast 4.6.0 (evaluate and compare completeness of assemblies, based on universal orthologs)
+                busco 4.1.4 (evaluate and compare completeness of assemblies, based on universal orthologs)
+                quast 4.6.0 (evaluate and compare many statistics including the contiguity)
                 canu 2.1.1 (create meryl db)
-                merqury 1.3.1 (evaluate quality of assemblies, reference free)
+                merqury 1.3.1 (evaluate quality of assemblies based on comparison of k-mers of unassembled Illumina short reads)
     Scripts:    3_polishing_1_align_illumina_1_create_bowtie_index.slurm
                 3_polishing_1_align_illumina_2_align.slurm
                 3_polishing_1_align_illumina_3_SAM_to_BAM.slurm
