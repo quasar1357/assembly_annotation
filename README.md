@@ -59,7 +59,7 @@ This dataset is itself composed of three types of **raw data**:
     Scripts:    2_assembly_1_run_flye.slurm
                 2_assembly_2_run_canu.slurm
                 2_assembly_3_run_trinity.slurm
-    Input:      Raw reads fastq files
+    Input:      Raw reads fastq files (pacbio)
     Output:     Fasta file (per assembly)
 
 ### 3) Polishing of Pacbio assemblies using Illumina reads
