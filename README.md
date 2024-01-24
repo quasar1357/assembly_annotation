@@ -23,7 +23,7 @@ The general idea of the project is to perform an entire assembly and annotation 
 
 The dataset originates from:
 
-Jiao WB, Schneeberger K. Chromosome-level assemblies of multiple Arabidopsis genomes reveal hotspots of rearrangements with altered evolutionary dynamics. Nature Communications. 2020;11:1–10. Available from: http://dx.doi.org/10.1038/s41467-020-14779-y
+Jiao W.-B., Schneeberger K.: Chromosome-level assemblies of multiple Arabidopsis genomes reveal hotspots of rearrangements with altered evolutionary dynamics. Nature Communications. 2020;11:1–10. Available from: http://dx.doi.org/10.1038/s41467-020-14779-y
 
 **Specific dataset used**:
 
@@ -33,9 +33,9 @@ Jiao WB, Schneeberger K. Chromosome-level assemblies of multiple Arabidopsis gen
 
 This dataset is itself composed of three types of **raw data**:
 
-1) Whole genome Illumina short reads with high precision (Illumina)
-2) Whole genome PacBio long reads with lower precision (pacbio)
-3) Whole transcriptome Illumina RNA-seq short reads (RNAseq)
+1) Whole genome Illumina paired-end libraries; short reads with high precision (Illumina)
+2) Whole genome PacBio libraries; long reads with lower precision (pacbio)
+3) Whole transcriptome Illumina RNA-seq libraries; short reads (RNAseq)
 
 ## Data analysis steps
 
