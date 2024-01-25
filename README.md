@@ -56,7 +56,7 @@ This dataset is itself composed of three types of **raw data**:
     Software:   flye 2.8.3
                 canu 2.1.1
                 trinity 2.5.1
-    Scripts:    [2_assembly_1_run_flye.slurm](./scripts/2_assembly_1_run_flye.slurm)
+    Scripts:    2_assembly_1_run_flye.slurm
                 2_assembly_2_run_canu.slurm
                 2_assembly_3_run_trinity.slurm
     Input:      Raw reads fastq files (pacbio)
