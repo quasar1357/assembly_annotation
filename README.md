@@ -103,6 +103,7 @@ This dataset is itself composed of three types of **raw data**:
     Software:   EDTA_v1.9.6
                 TEsorter_1.3.0
     Scripts:    5_annotate_TEs_1_run_EDTA.slurm
+                5_annotate_TEs_1_TE_comparison.ipynb
                 5_annotate_TEs_2_sort_TEs_1_grep_copia_gypsy.slurm
                 5_annotate_TEs_2_sort_TEs_2_run_TEsorter.slurm
                 5_annotate_TEs_2_sort_TEs_3_run_TEsorter_on_db.slurm
@@ -114,6 +115,8 @@ This dataset is itself composed of three types of **raw data**:
                   gff with whole-genome TE annotation (.mod.EDTA.TEanno.gff3)
                   gff with annotation of intact only (.mod.EDTA.intact.gff3)                  
                   fasta with non-redundant TE library, classification into superfamilies (.mod.EDTA.TElib.fa)
+                Python notebook:
+                  Comparison of TE superfamiliy abundance between accessions
                 TEsorter:
                   Annotated protein sequences, used for dating and phylogenetic analysis (.dom.faa)
                   TE classification (.cls.tsv)
