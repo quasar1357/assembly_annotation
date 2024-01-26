@@ -123,7 +123,7 @@ This dataset is itself composed of three types of **raw data**:
                 R-script:
                   Plot with arrangement of TEs of different families on the largest contig
     
-### 6) TE dynamics (dating an phylogenetics)
+### 6) TE dynamics (dating and phylogenetics)
     Goal:       Date TEs of different families
                 Assess phylogeny inside 2 most important TE superfamilies (copia and gypsy)
     Software:   Date:
