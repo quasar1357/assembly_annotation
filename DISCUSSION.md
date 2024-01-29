@@ -368,7 +368,7 @@ Dotplots and syntenic maps are a useful tool for assessing and improving the qua
     **Observations & Conclusions**:
     - Overall the structure looks ensuringly similar to reference.
     - Just some major translocations (Chr 5) and inversions (Chr 1), which could be due to biological reasons or due to the assembly/annotation.
-    - Interestingly, contig250, which showed a lot of TEs at its beginning (see step 5), maps to the second half of chromosome 5, which could indicate that the region with the many TEs is around the centromere, which is also usually hard to assemble, which in turn would explain why the contigs stayed seperated.
+    - Interestingly, scaffold_250, which showed a lot of TEs at its beginning (see step 5), maps to the second half of chromosome 5, which could indicate that the region with the many TEs is around the centromere, which is also usually hard to assemble, which in turn would explain why the contigs stayed seperated.
 
 
 - **Species tree**:
