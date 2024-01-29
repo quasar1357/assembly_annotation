@@ -49,7 +49,7 @@ do
     sed_file=${out_file}.sed
     sed 's/|.\+//' ${out_file} > ${sed_file}
 
-    # use custalo to align sequences
+    # use clustal omega to align sequences
     clustalo_file=${sed_file}.clustalo_protein_alignment.fasta
     clustalo -i ${sed_file} -o ${clustalo_file}
 

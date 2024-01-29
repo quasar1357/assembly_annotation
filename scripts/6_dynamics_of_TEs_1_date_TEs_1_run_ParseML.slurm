@@ -27,6 +27,7 @@ output_dir=${course_dir}/results/6_dynamics_of_TEs_1_dating
 
 # 1) Split the amount of DNA by bins of % divergence (or My) for each repeat name, family or class
 parse_script=/data/users/rschwob/01_assembly_annotation_course/scripts/6_dynamics_of_TEs_1_date_TEs_ParseML.pl
+# Use -l <max,bin> to split amount of DNA by bins of % divergence (or My) for each repeat name, family or class (one output for each)
 perl ${parse_script} -i ${in_file} -l 50,1 -v
 # Move output files to output folder (is by default created in input folder)
 mv ${in_dir}/*landscape* ${output_dir}
