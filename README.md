@@ -37,7 +37,7 @@ This dataset is itself composed of three types of **raw data**:
 
 1) Whole genome Illumina paired-end libraries; short reads with high precision (Illumina)
 2) Whole genome PacBio libraries; long reads with lower precision (pacbio)
-3) Whole transcriptome Illumina RNA-seq libraries; short reads (RNAseq)
+3) Whole transcriptome Illumina RNA-seq paired-end libraries; short reads (RNAseq)
 
 ## Data analysis steps
 
